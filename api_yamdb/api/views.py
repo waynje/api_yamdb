@@ -1,5 +1,6 @@
-from http import HTTPStatus
-from rest_framework import viewsets
+from rest_framework.viewsets import ModelViewSet
+from rest_framework.filters import SearchFilter
+from rest_framework.pagination import PageNumberPagination
 
 from .permissions import(
     IsAdminOrReadOnly,
@@ -17,21 +18,29 @@ from reviews.models import(
 )
 
 
-class CategoryViewSet(viewsets.ModelViewSet):
+class CategoryGenreMixin(ModelViewSet):
+    
+    pagination_class = PageNumberPagination
+    permission_classes = (IsAdminOrReadOnly,)
+    filter_backends = (SearchFilter,)
+    search_fields = ('name',)
+    lookup_field = 'slug'
+
+
+class CategoryViewSet(CategoryGenreMixin):
 
     queryset = Category.objects.all()
     serializer_class = CategorySerializer
-    permission_classes = IsAdminOrReadOnly
 
 
-class GenreViewSet(viewsets.ModelViewSet):
+
+class GenreViewSet(CategoryGenreMixin):
     
     queryset = Genre.objects.all()
     serializer_class = GenreSerializer
-    permission_classes = IsAdminOrReadOnly
 
 
-class TitleViewSet(viewsets.ModelViewSet):
+class TitleViewSet(ModelViewSet):
     
     queryset = Title.objects.all()
     permission_classes = IsAdminOrReadOnly
