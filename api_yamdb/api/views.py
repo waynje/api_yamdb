@@ -19,7 +19,6 @@ from reviews.models import(
 
 
 class CategoryGenreMixin(ModelViewSet):
-    
     pagination_class = PageNumberPagination
     permission_classes = (IsAdminOrReadOnly,)
     filter_backends = (SearchFilter,)
