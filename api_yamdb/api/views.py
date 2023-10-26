@@ -1,10 +1,13 @@
 from http import HTTPStatus
 from rest_framework import viewsets
+from rest_framework.filters import SearchFilter
+from rest_framework.pagination import PageNumberPagination
 from rest_framework.permissions import (
     IsAdminUser,
     IsAuthenticatedOrReadOnly,
     
 )
+
 
 from .serializers import(
     CategorySerializer,
@@ -19,10 +22,21 @@ from reviews.models import(
 )
 
 
+class CategoryGenreMixin(viewsets.ModelViewSet):
+    pagination_class = PageNumberPagination
+    serializer_class = CategorySerializer
+    filter_backends = (SearchFilter,)
+    search_fields = ('name',)
+    lookup_field = 'slug'
+
+
 class CategoryViewSet(viewsets.ModelViewSet):
 
     queryset = Category.objects.all()
     serializer_class = CategorySerializer
+    filter_backends = (SearchFilter,)
+    search_fields = ('name',)
+    lookup_field = 'slug'
 
     def get_permissions(self):
         if self.request.method in ['PUT', 'DELETE']:
