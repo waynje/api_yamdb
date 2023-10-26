@@ -1,11 +1,9 @@
 from http import HTTPStatus
 from rest_framework import viewsets
-from rest_framework.permissions import (
-    IsAdminUser,
-    IsAuthenticatedOrReadOnly,
-    
-)
 
+from .permissions import(
+    IsAdminOrReadOnly,
+)
 from .serializers import(
     CategorySerializer,
     GenreSerializer,
@@ -23,32 +21,20 @@ class CategoryViewSet(viewsets.ModelViewSet):
 
     queryset = Category.objects.all()
     serializer_class = CategorySerializer
-
-    def get_permissions(self):
-        if self.request.method in ['PUT', 'DELETE']:
-            return [IsAdminUser()]
-        return [IsAuthenticatedOrReadOnly()]
+    permission_classes = IsAdminOrReadOnly
 
 
 class GenreViewSet(viewsets.ModelViewSet):
     
     queryset = Genre.objects.all()
     serializer_class = GenreSerializer
-    
-    def get_permissions(self):
-        if self.request.method in ['PUT', 'DELETE']:
-            return [IsAdminUser()]
-        return [IsAuthenticatedOrReadOnly()]
+    permission_classes = IsAdminOrReadOnly
 
 
 class TitleViewSet(viewsets.ModelViewSet):
     
     queryset = Title.objects.all()
-    
-    def get_permissions(self):
-        if self.request.method in ['PUT', 'DELETE']:
-            return [IsAdminUser()]
-        return [IsAuthenticatedOrReadOnly()]
+    permission_classes = IsAdminOrReadOnly
     
     def get_serializer_class(self):
         if self.request.method in ['PUT', 'DELETE']:
