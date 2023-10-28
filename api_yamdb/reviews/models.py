@@ -2,11 +2,19 @@ import datetime
 from django.db import models
 from django.core.validators import validate_slug
 from django.forms import ValidationError
-
+from user.models import User
 
 def year_validator(value):
     if value > datetime.datetime.now().year:
         raise ValidationError('Год выпуска не может быть больше текущего!')
+
+
+def validate_score(value):
+    if 0 < value > 10:
+        raise ValidationError(
+            ('Оценка должна быть от 1 до 10'),
+            params={'value': value},
+        )
 
 
 class Category(models.Model):
@@ -108,3 +116,39 @@ class GenreTitle(models.Model):
     
     def __str__(self):
         return f'{self.title} входит в жанр {self.genre}'
+
+
+class Review(models.Model):
+    title = models.ForeignKey(
+        Title,
+        related_name='reviews',
+        on_delete=models.CASCADE,
+        verbose_name='Произведение',
+    )
+    text = models.TextField(
+        verbose_name='Текст отзыва'
+    )
+    author = models.ForeignKey(
+        User,
+        related_name='reviews',
+        on_delete=models.CASCADE,
+        verbose_name='Автор отзыва',
+    )
+    score = models.IntegerField(
+        verbose_name='Оценка',
+        validators=[validate_score]
+    )
+    pub_date = models.DateTimeField(
+        auto_now_add=True,
+        verbose_name='Дата'
+    )
+
+    class Meta:
+        ordering = ['pub_date']
+        verbose_name = 'Отзыв'
+        verbose_name_plural = 'Отзывы'
+
+    def __str__(self):
+        return (
+            f'{self.text}'
+        )

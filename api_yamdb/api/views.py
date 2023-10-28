@@ -1,3 +1,4 @@
+from django.shortcuts import get_object_or_404
 from django_filters.rest_framework import DjangoFilterBackend
 from rest_framework.viewsets import ModelViewSet
 from rest_framework.filters import(
@@ -14,11 +15,13 @@ from .serializers import(
     CategorySerializer,
     GenreSerializer,
     TitleGETSerializer,
-    TitleNOTSAFESerliazer
+    TitleNOTSAFESerliazer,
+    ReviewSerializer
 )
 from reviews.models import(
     Category,
     Genre,
+    Review,
     Title
 )
 
@@ -57,4 +60,16 @@ class TitleViewSet(ModelViewSet):
         if self.request.method in ['PUT', 'DELETE']:
             return TitleGETSerializer
         return TitleNOTSAFESerliazer
-    
+
+
+class ReviewViewSet(ModelViewSet):
+    serializer_class = ReviewSerializer
+
+    def get_queryset(self):
+        title = get_object_or_404(Title, pk=self.kwargs.get("title_id"))
+        return title.reviews.all()
+
+    def perform_create(self, serializer):
+        title_id = self.kwargs.get('title_id')
+        title = get_object_or_404(Title, id=title_id)
+        serializer.save(author=self.request.user, title=title)
