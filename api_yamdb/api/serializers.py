@@ -3,6 +3,7 @@ from rest_framework import serializers
 from reviews.models import (
     Category,
     Genre,
+    Review,
     Title,
     year_validator
 )
@@ -67,4 +68,10 @@ class TitleNOTSAFESerliazer(serializers.ModelSerializer):
             'category'
         )
         model = Title
-    
+
+
+class ReviewSerializer(serializers.ModelSerializer):
+
+    class Meta:
+        fields = '__all__'
+        model = Review
