@@ -1,3 +1,4 @@
+from datetime import timedelta
 from pathlib import Path
 
 
@@ -23,9 +24,11 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'api.apps.ApiConfig',
     'reviews.apps.ReviewsConfig',
-    'rest_framework',
     'user.apps.UserConfig',
-
+    'rest_framework',
+    'rest_framework_simplejwt',
+    'rest_framework_simplejwt.token_blacklist',
+    'django_filters',
 ]
 
 MIDDLEWARE = [
@@ -121,6 +124,5 @@ REST_FRAMEWORK = {
     ".PageNumberPagination",
     "PAGE_SIZE": 5,
 }
-
 
 AUTH_USER_MODEL = 'user.User'
