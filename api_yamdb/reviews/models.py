@@ -1,8 +1,9 @@
 import datetime
 from django.db import models
-from django.core.validators import validate_slug
+from django.core.validators import RegexValidator
 from django.forms import ValidationError
 from user.models import User
+
 
 def year_validator(value):
     if value > datetime.datetime.now().year:
@@ -26,7 +27,10 @@ class Category(models.Model):
         max_length=50,
         verbose_name='Слаг',
         unique=True,
-        validators=[validate_slug]
+        validators=[RegexValidator(
+            regex=r'^[-a-zA-Z0-9_]+$',
+            message='Слаг категории содержит недопустимый символ'
+        )]
     )
 
     class Meta:
@@ -47,14 +51,17 @@ class Genre(models.Model):
         max_length=50,
         verbose_name='Слаг',
         unique=True,
-        validators=[validate_slug]
+        validators=[RegexValidator(
+            regex=r'^[-a-zA-Z0-9_]+$',
+            message='Слаг категории содержит недопустимый символ'
+        )]
     )
-    
+
     class Meta:
         verbose_name = 'Жанр'
         verbose_name_plural = 'Жанры'
         ordering = ('name',)
-    
+
     def __str__(self):
         return self.name
 
@@ -87,15 +94,15 @@ class Title(models.Model):
         related_name='titles',
         null=True
     )
-    
+
     class Meta:
         verbose_name = 'Произведение'
         verbose_name_plural = 'Произведения'
         ordering = ('-year', 'name',)
-    
+
     def __str__(self):
         return self.name
-    
+
 
 class GenreTitle(models.Model):
     genre = models.ForeignKey(
@@ -108,12 +115,12 @@ class GenreTitle(models.Model):
         on_delete=models.CASCADE,
         verbose_name='Произведение',
     )
-    
+
     class Meta:
         verbose_name = 'Жанр и произведение'
         verbose_name_plural = 'Жанры и произведения'
         ordering = ('id',)
-    
+
     def __str__(self):
         return f'{self.title} входит в жанр {self.genre}'
 
