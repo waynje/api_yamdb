@@ -17,20 +17,21 @@ class CategorySerializer(serializers.ModelSerializer):
 
 
 class GenreSerializer(serializers.ModelSerializer):
-    
+
     class Meta:
         model = Genre
         exclude = ('id',)
 
 
 class TitleGETSerializer(serializers.ModelSerializer):
+
     rating = serializers.IntegerField(read_only=True)
     genre = GenreSerializer(
         many=True,
         read_only=True,
     )
     category = CategorySerializer(read_only=True)
-    
+
     class Meta:
         fields = (
             'id',
@@ -45,6 +46,7 @@ class TitleGETSerializer(serializers.ModelSerializer):
 
 
 class TitleNOTSAFESerliazer(serializers.ModelSerializer):
+
     year = serializers.IntegerField(
         validators=[year_validator]
     )
@@ -57,7 +59,7 @@ class TitleNOTSAFESerliazer(serializers.ModelSerializer):
         slug_field='slug',
         queryset=Category.objects.all(),
     )
-    
+
     class Meta:
         fields = (
             'id',
