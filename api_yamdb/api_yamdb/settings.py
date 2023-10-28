@@ -23,6 +23,9 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'api.apps.ApiConfig',
     'reviews.apps.ReviewsConfig',
+    'rest_framework',
+    'user.apps.UserConfig',
+
 ]
 
 MIDDLEWARE = [
@@ -87,7 +90,7 @@ AUTH_PASSWORD_VALIDATORS = [
 
 # Internationalization
 
-LANGUAGE_CODE = 'en-us'
+LANGUAGE_CODE = 'ru'
 
 TIME_ZONE = 'UTC'
 
@@ -118,3 +121,6 @@ REST_FRAMEWORK = {
     ".PageNumberPagination",
     "PAGE_SIZE": 5,
 }
+
+
+AUTH_USER_MODEL = 'user.User'
