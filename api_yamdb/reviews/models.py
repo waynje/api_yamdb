@@ -63,7 +63,7 @@ class Title(models.Model):
         null=False,
         verbose_name='Год выпуска',
     )
-    description = models.CharField(
+    description = models.TextField(
         verbose_name='Описание'
     )
     genre = models.ManyToManyField(
