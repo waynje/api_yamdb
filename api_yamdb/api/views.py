@@ -1,7 +1,12 @@
+from django_filters.rest_framework import DjangoFilterBackend
 from rest_framework.viewsets import ModelViewSet
-from rest_framework.filters import SearchFilter
+from rest_framework.filters import(
+    SearchFilter,
+    OrderingFilter,
+)
 from rest_framework.pagination import PageNumberPagination
 
+from .filters import TitlesFilter
 from .permissions import(
     IsAdminOrReadOnly,
 )
@@ -25,6 +30,7 @@ class CategoryGenreMixin(ModelViewSet):
     filter_backends = (SearchFilter,)
     search_fields = ('name',)
     lookup_field = 'slug'
+    
 
 
 class CategoryViewSet(CategoryGenreMixin):
@@ -42,8 +48,11 @@ class GenreViewSet(CategoryGenreMixin):
 
 class TitleViewSet(ModelViewSet):
     
-    queryset = Title.objects.all()
+    queryset = Title.objects.all() ### Тут нужно будет изменить, когда появится модель Review
     permission_classes = IsAdminOrReadOnly
+    filter_backends = (DjangoFilterBackend, OrderingFilter)
+    ordering_fields = ('name',)
+    filterset_class = TitlesFilter
     
     def get_serializer_class(self):
         if self.request.method in ['PUT', 'DELETE']:
