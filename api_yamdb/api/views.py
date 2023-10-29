@@ -145,7 +145,8 @@ class UserCreateViewSet(APIView):
             {'username': user.username, 'email': user.email},
             status=status.HTTP_200_OK
         )
-    
+
+
 class UserGetTokenViewSet(APIView):
     permission_classes = (AllowAny,)
     serializer_class = UserGetTokenSerializer
@@ -162,7 +163,7 @@ class UserGetTokenViewSet(APIView):
         return Response({
             'token': token
         }, status=status.HTTP_201_CREATED)
-    
+
 
 class UserViewSet(viewsets.ModelViewSet):
     permission_classes = (AdminOnly,)

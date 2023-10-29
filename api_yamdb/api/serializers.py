@@ -79,6 +79,7 @@ class ReviewSerializer(serializers.ModelSerializer):
         fields = '__all__'
         model = Review
 
+
 class UserCreateSerializer(serializers.ModelSerializer):
 
     class Meta:
