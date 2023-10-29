@@ -3,7 +3,7 @@ from django.db import models
 from django.core.validators import RegexValidator
 from django.forms import ValidationError
 from user.models import User
-
+from django.core.validators import MaxValueValidator, MinValueValidator
 
 def year_validator(value):
     if value > datetime.datetime.now().year:
@@ -143,8 +143,8 @@ class Review(models.Model):
         verbose_name='Автор отзыва',
     )
     score = models.IntegerField(
-        verbose_name='Оценка',
-        validators=[validate_score]
+        verbose_name='Оценка от 1 до 10',
+        validators=[MinValueValidator(1), MaxValueValidator(10)]
     )
     pub_date = models.DateTimeField(
         auto_now_add=True,
@@ -152,9 +152,46 @@ class Review(models.Model):
     )
 
     class Meta:
-        ordering = ['pub_date']
         verbose_name = 'Отзыв'
         verbose_name_plural = 'Отзывы'
+        constraints = (
+            models.UniqueConstraint(
+                fields=('title', 'author'),
+                name='unique_review'
+            ),
+        )
+
+    def __str__(self):
+        return (
+            f'{self.text}'
+        )
+
+
+class Comment(models.Model):
+
+    review = models.ForeignKey(
+        Review,
+        on_delete=models.CASCADE,
+        related_name='comments',
+        verbose_name='Отзыв',
+    )
+    author = models.ForeignKey(
+        User,
+        on_delete=models.CASCADE,
+        related_name='comments',
+        verbose_name='Автор',
+    )
+    text = models.TextField(
+        verbose_name='Текст комментария'
+    )
+    pub_date = models.DateTimeField(
+        auto_now_add=True,
+        verbose_name='Дата'
+    )
+
+    class Meta:
+        verbose_name = 'Комментарий'
+        verbose_name_plural = 'Комментарии'
 
     def __str__(self):
         return (
