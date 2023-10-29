@@ -8,6 +8,7 @@ from reviews.models import (
     Title,
     year_validator
 )
+from user.models import User
 
 
 class CategorySerializer(serializers.ModelSerializer):
@@ -113,3 +114,59 @@ class CommentSerializer(serializers.ModelSerializer):
         review_id = self.context['view'].kwargs['review_id']
         validated_data['review'] = get_object_or_404(Review, id=review_id)
         return super().create(validated_data)
+
+
+
+class UserCreateSerializer(serializers.ModelSerializer):
+
+    class Meta:
+        model = User
+        fields = ('username', 'email')
+
+    def validate(self, data):
+        username = data.get('username')
+        email = data.get('email')
+        if User.objects.filter(username=username).exists():
+            raise serializers.ValidationError(
+                'Пользователь с таким логином уже существует, укажите другой'
+            )
+        if User.objects.filter(email=email).exists():
+            raise serializers.ValidationError(
+                'Пользователь с таким email уже существует, укажите другой'
+            )
+        if data.get('username') == 'me':
+            raise serializers.ValidationError('Пожалуйста, используйте другое имя!')
+        return data
+
+
+class UserSerializer(serializers.ModelSerializer):
+
+    class Meta:
+        model = User
+        fields = (
+            'username', 'email',
+            'first_name', 'last_name',
+            'bio', 'role'
+        )
+
+    @staticmethod
+    def validate_username(username):
+        if username == 'me':
+            raise serializers.ValidationError(
+                'Пожалуйста, используйте другое имя!'
+            )
+        return username
+
+
+class UserGetTokenSerializer(serializers.Serializer):
+
+    username = serializers.RegexField(
+        regex=r'^[\w.@+-]+$',
+        max_length=150,
+        required=True
+    )
+    confirmation_code = serializers.CharField(
+        max_length=150,
+        required=True
+    )
+
