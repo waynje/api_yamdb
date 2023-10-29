@@ -121,7 +121,6 @@ class GenreTitle(models.Model):
         verbose_name_plural = 'Жанры и произведения'
         ordering = ('id',)
 
-
     def __str__(self):
         return f'{self.title} входит в жанр {self.genre}'
 

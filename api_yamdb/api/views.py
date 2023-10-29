@@ -1,5 +1,13 @@
 from django.shortcuts import get_object_or_404
 from django_filters.rest_framework import DjangoFilterBackend
+from rest_framework import viewsets, filters, status
+from django.contrib.auth import get_user_model
+from django.contrib.auth.tokens import default_token_generator
+from django.core.mail import send_mail
+from django.conf import settings
+from rest_framework.permissions import AllowAny
+from rest_framework_simplejwt.tokens import RefreshToken
+from rest_framework.views import APIView
 from rest_framework.viewsets import (
     ModelViewSet,
     GenericViewSet
@@ -14,23 +22,32 @@ from rest_framework.mixins import (
     DestroyModelMixin,
 )
 from rest_framework.pagination import PageNumberPagination
+from rest_framework.response import Response
 
 from .filters import TitlesFilter
 from .permissions import (
     IsAdminOrReadOnly,
+    AdminOnly,
 )
 from .serializers import (
     CategorySerializer,
     GenreSerializer,
     TitleGETSerializer,
     TitleNOTSAFESerliazer,
-    ReviewSerializer
+    ReviewSerializer,
+    UserCreateSerializer,
+    UserSerializer,
+    UserGetTokenSerializer
+
 )
 from reviews.models import (
     Category,
     Genre,
     Title
 )
+
+
+User = get_user_model()
 
 
 class CategoryGenreMixin(
@@ -99,3 +116,58 @@ class ReviewViewSet(ModelViewSet):
         title_id = self.kwargs.get('title_id')
         title = get_object_or_404(Title, id=title_id)
         serializer.save(author=self.request.user, title=title)
+
+
+class UserCreateViewSet(APIView):
+    permission_classes = (AllowAny,)
+    serializer_class = UserCreateSerializer
+
+    def post(self, request):
+        serializer = self.serializer_class(data=request.data)
+        serializer.is_valid(raise_exception=True)
+        serializer.save()
+
+        user = get_object_or_404(User, username=request.data.get('username'))
+        confirmation_code = default_token_generator.make_token(user)
+
+        subject = 'YaMDB'
+        message = 'Ваш секретный код - ' + confirmation_code
+
+        send_mail(
+            subject,
+            message,
+            settings.DEFAULT_FROM_EMAIL,
+            [user.email, ],
+            fail_silently=False,
+        )
+
+        return Response(
+            {'username': user.username, 'email': user.email},
+            status=status.HTTP_200_OK
+        )
+
+
+class UserGetTokenViewSet(APIView):
+    permission_classes = (AllowAny,)
+    serializer_class = UserGetTokenSerializer
+
+    def post(self, request):
+        serializer = self.serializer_class(data=request.data)
+        if serializer.is_valid(raise_exception=True):
+            username = serializer.data.get('username')
+            user = get_object_or_404(User, username=username)
+            user.is_active = True
+            user.save()
+            refresh = RefreshToken.for_user(user)
+            token = str(refresh.access_token)
+        return Response({
+            'token': token
+        }, status=status.HTTP_201_CREATED)
+
+
+class UserViewSet(viewsets.ModelViewSet):
+    permission_classes = (AdminOnly,)
+    queryset = User.objects.all()
+    serializer_class = UserSerializer
+    filter_backends = (filters.SearchFilter,)
+    search_fields = ('username',)
