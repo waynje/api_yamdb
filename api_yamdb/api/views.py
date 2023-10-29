@@ -26,10 +26,13 @@ from rest_framework.response import Response
 
 from .filters import TitlesFilter
 from .permissions import (
+    IsAdminOrReadOnly, 
+    IsAdminModeratorAuthorOrReadOnly,
     IsAdminOrReadOnly,
     AdminOnly,
 )
 from .serializers import (
+    CommentSerializer,
     CategorySerializer,
     GenreSerializer,
     TitleGETSerializer,
@@ -37,13 +40,14 @@ from .serializers import (
     ReviewSerializer,
     UserCreateSerializer,
     UserSerializer,
-    UserGetTokenSerializer
+    UserGetTokenSerializer,
 
 )
 from reviews.models import (
     Category,
     Genre,
-    Title
+    Review,
+    Title,
 )
 
 
@@ -107,10 +111,21 @@ class TitleViewSet(ModelViewSet):
 class ReviewViewSet(ModelViewSet):
 
     serializer_class = ReviewSerializer
+    permission_classes = (IsAdminModeratorAuthorOrReadOnly, )
 
     def get_queryset(self):
-        title = get_object_or_404(Title, pk=self.kwargs.get("title_id"))
+        title = get_object_or_404(Title, id=self.kwargs.get('title_id'))
         return title.reviews.all()
+
+
+class CommentViewSet(ModelViewSet):
+
+    serializer_class = CommentSerializer
+    permission_classes = (IsAdminModeratorAuthorOrReadOnly, )
+
+    def get_queryset(self):
+        review = get_object_or_404(Review, id=self.kwargs.get('review_id'))
+        return review.comments.all()
 
     def perform_create(self, serializer):
         title_id = self.kwargs.get('title_id')
@@ -119,6 +134,7 @@ class ReviewViewSet(ModelViewSet):
 
 
 class UserCreateViewSet(APIView):
+    
     permission_classes = (AllowAny,)
     serializer_class = UserCreateSerializer
 
@@ -148,6 +164,7 @@ class UserCreateViewSet(APIView):
 
 
 class UserGetTokenViewSet(APIView):
+    
     permission_classes = (AllowAny,)
     serializer_class = UserGetTokenSerializer
 
@@ -166,8 +183,10 @@ class UserGetTokenViewSet(APIView):
 
 
 class UserViewSet(viewsets.ModelViewSet):
+    
     permission_classes = (AdminOnly,)
     queryset = User.objects.all()
     serializer_class = UserSerializer
     filter_backends = (filters.SearchFilter,)
     search_fields = ('username',)
+

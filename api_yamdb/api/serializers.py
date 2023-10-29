@@ -1,6 +1,7 @@
 from rest_framework import serializers
-
+from django.shortcuts import get_object_or_404
 from reviews.models import (
+    Comment,
     Category,
     Genre,
     Review,
@@ -74,10 +75,46 @@ class TitleNOTSAFESerliazer(serializers.ModelSerializer):
 
 
 class ReviewSerializer(serializers.ModelSerializer):
+    author = serializers.SlugRelatedField(
+        read_only=True,
+        slug_field='username',
+    )
 
     class Meta:
-        fields = '__all__'
         model = Review
+        fields = ('id', 'text', 'author', 'score', 'pub_date',)
+        read_only_fields = ('title',)
+
+    def validate(self, data):
+        if self.context['request'].method == 'POST':
+            title_id = self.context['view'].kwargs['title_id']
+            title = get_object_or_404(Title, id=title_id)
+            author = self.context['request'].user
+            if Review.objects.filter(title=title, author=author).exists():
+                raise serializers.ValidationError(
+                    'Отзыв на это произведение уже есть')
+            data['author'] = author
+            data['title'] = title
+        return data
+
+
+class CommentSerializer(serializers.ModelSerializer):
+    author = serializers.SlugRelatedField(
+        read_only=True,
+        slug_field='username',
+    )
+
+    class Meta:
+        model = Comment
+        fields = ('id', 'text', 'author', 'pub_date')
+        read_only_fields = ('review',)
+
+    def create(self, validated_data):
+        validated_data['author'] = self.context['request'].user
+        review_id = self.context['view'].kwargs['review_id']
+        validated_data['review'] = get_object_or_404(Review, id=review_id)
+        return super().create(validated_data)
+
 
 
 class UserCreateSerializer(serializers.ModelSerializer):
@@ -132,3 +169,4 @@ class UserGetTokenSerializer(serializers.Serializer):
         max_length=150,
         required=True
     )
+
