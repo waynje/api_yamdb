@@ -58,3 +58,6 @@ class User(AbstractUser):
 
     def __str__(self):
         return self.username
+
+    def is_admin(self):
+        return self.role == 'admin'
