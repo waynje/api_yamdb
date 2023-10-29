@@ -1,3 +1,4 @@
+from django.db.models import Avg
 from django.shortcuts import get_object_or_404
 from django_filters.rest_framework import DjangoFilterBackend
 from rest_framework import viewsets, filters, status
@@ -26,7 +27,7 @@ from rest_framework.response import Response
 
 from .filters import TitlesFilter
 from .permissions import (
-    IsAdminOrReadOnly, 
+    IsAdminOrReadOnly,
     IsAdminModeratorAuthorOrReadOnly,
     IsAdminOrReadOnly,
     AdminOnly,
@@ -83,7 +84,7 @@ class GenreViewSet(CategoryGenreMixin):
 class TitleViewSet(ModelViewSet):
 
     # Тут изменить, когда появится модель Review
-    queryset = Title.objects.all()
+    queryset = Title.objects.annotate(rating=Avg('reviews__score'))
     permission_classes = (IsAdminOrReadOnly,)
     filter_backends = (DjangoFilterBackend, OrderingFilter)
     ordering_fields = ('name',)
@@ -134,7 +135,7 @@ class CommentViewSet(ModelViewSet):
 
 
 class UserCreateViewSet(APIView):
-    
+
     permission_classes = (AllowAny,)
     serializer_class = UserCreateSerializer
 
@@ -164,7 +165,7 @@ class UserCreateViewSet(APIView):
 
 
 class UserGetTokenViewSet(APIView):
-    
+
     permission_classes = (AllowAny,)
     serializer_class = UserGetTokenSerializer
 
@@ -183,10 +184,9 @@ class UserGetTokenViewSet(APIView):
 
 
 class UserViewSet(viewsets.ModelViewSet):
-    
+
     permission_classes = (AdminOnly,)
     queryset = User.objects.all()
     serializer_class = UserSerializer
     filter_backends = (filters.SearchFilter,)
     search_fields = ('username',)
-
