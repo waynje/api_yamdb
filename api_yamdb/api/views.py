@@ -2,16 +2,17 @@ from django.db.models import Avg
 from django.shortcuts import get_object_or_404
 from django_filters.rest_framework import DjangoFilterBackend
 from rest_framework import viewsets, filters, status
+from rest_framework.mixins import CreateModelMixin
 from django.contrib.auth import get_user_model
 from django.contrib.auth.tokens import default_token_generator
 from django.core.mail import send_mail
 from rest_framework.decorators import action
 from django.conf import settings
+from rest_framework_simplejwt.tokens import AccessToken
 from rest_framework.permissions import (
     AllowAny,
     IsAuthenticated,
 )
-from rest_framework_simplejwt.tokens import RefreshToken
 from rest_framework.views import APIView
 from rest_framework.viewsets import (
     ModelViewSet,
@@ -134,7 +135,7 @@ class CommentViewSet(TitleReviewCommentMixin):
         review = get_object_or_404(Review, id=self.kwargs.get('review_id'))
         return review.comments.all()
 
-    #def perform_create(self, serializer):
+    # def perform_create(self, serializer):
     #    title_id = self.kwargs.get('title_id')
     #    title = get_object_or_404(Title, id=title_id)
     #    serializer.save(author=self.request.user, title=title)
@@ -175,23 +176,24 @@ class UserCreateViewSet(APIView):
         )
 
 
-class UserGetTokenViewSet(APIView):
+class UserGetTokenViewSet(CreateModelMixin, viewsets.GenericViewSet):
 
-    permission_classes = (AllowAny,)
+    queryset = User.objects.all()
     serializer_class = UserGetTokenSerializer
+    permission_classes = (AllowAny,)
 
-    def post(self, request):
-        serializer = self.serializer_class(data=request.data)
-        if serializer.is_valid(raise_exception=True):
-            username = serializer.data.get('username')
-            user = get_object_or_404(User, username=username)
-            user.is_active = True
-            user.save()
-            refresh = RefreshToken.for_user(user)
-            token = str(refresh.access_token)
-        return Response({
-            'token': token
-        }, status=status.HTTP_201_CREATED)
+    def create(self, request, *args, **kwargs):
+        serializer = UserGetTokenSerializer(data=request.data)
+        serializer.is_valid(raise_exception=True)
+        username = serializer.validated_data.get('username')
+        confirmation_code = serializer.validated_data.get('confirmation_code')
+        user = get_object_or_404(User, username=username)
+
+        if not default_token_generator.check_token(user, confirmation_code):
+            message = {'confirmation_code': 'Код подтверждения невалиден'}
+            return Response(message, status=status.HTTP_400_BAD_REQUEST)
+        message = {'token': str(AccessToken.for_user(user))}
+        return Response(message, status=status.HTTP_200_OK)
 
 
 class UserViewSet(viewsets.ModelViewSet):

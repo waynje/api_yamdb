@@ -116,7 +116,6 @@ class CommentSerializer(serializers.ModelSerializer):
         return super().create(validated_data)
 
 
-
 class UserCreateSerializer(serializers.ModelSerializer):
 
     class Meta:
