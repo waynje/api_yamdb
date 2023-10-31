@@ -1,13 +1,16 @@
 from django.db.models import Avg
 from django.shortcuts import get_object_or_404
 from django_filters.rest_framework import DjangoFilterBackend
-from rest_framework import viewsets, filters, status, permissions
+from rest_framework import viewsets, filters, status
 from django.contrib.auth import get_user_model
 from django.contrib.auth.tokens import default_token_generator
 from django.core.mail import send_mail
 from rest_framework.decorators import action
 from django.conf import settings
-from rest_framework.permissions import AllowAny
+from rest_framework.permissions import (
+    AllowAny,
+    IsAuthenticated,
+)
 from rest_framework_simplejwt.tokens import RefreshToken
 from rest_framework.views import APIView
 from rest_framework.viewsets import (
@@ -30,8 +33,7 @@ from .filters import TitlesFilter
 from .permissions import (
     IsAdminOrReadOnly,
     IsAdminModeratorAuthorOrReadOnly,
-    IsAdminOrReadOnly,
-    AdminOnly,
+    AdminOnly
 )
 from .serializers import (
     CommentSerializer,
@@ -54,6 +56,10 @@ from reviews.models import (
 
 
 User = get_user_model()
+
+
+class TitleReviewCommentMixin(ModelViewSet):
+    http_method_names = ['get', 'post', 'delete', 'patch']
 
 
 class CategoryGenreMixin(
@@ -82,7 +88,7 @@ class GenreViewSet(CategoryGenreMixin):
     serializer_class = GenreSerializer
 
 
-class TitleViewSet(ModelViewSet):
+class TitleViewSet(TitleReviewCommentMixin):
 
     # Тут изменить, когда появится модель Review
     queryset = Title.objects.annotate(rating=Avg('reviews__score'))
@@ -90,7 +96,6 @@ class TitleViewSet(ModelViewSet):
     filter_backends = (DjangoFilterBackend, OrderingFilter)
     ordering_fields = ('name',)
     filterset_class = TitlesFilter
-    http_method_names = ['get', 'post', 'delete', 'patch']
 
     def get_serializer_class(self):
         if self.request.method in ['DELETE']:
@@ -110,25 +115,24 @@ class TitleViewSet(ModelViewSet):
         self.perform_create(serializer)
 
 
-class ReviewViewSet(ModelViewSet):
+class ReviewViewSet(TitleReviewCommentMixin):
 
     serializer_class = ReviewSerializer
-    permission_classes = (IsAdminModeratorAuthorOrReadOnly, )
+    permission_classes = (IsAdminModeratorAuthorOrReadOnly,)
 
     def get_queryset(self):
         title = get_object_or_404(Title, id=self.kwargs.get('title_id'))
         return title.reviews.all()
 
 
-class CommentViewSet(ModelViewSet):
+class CommentViewSet(TitleReviewCommentMixin):
 
     serializer_class = CommentSerializer
-    permission_classes = (IsAdminModeratorAuthorOrReadOnly, )
+    permission_classes = (IsAdminModeratorAuthorOrReadOnly,)
 
     def get_queryset(self):
         review = get_object_or_404(Review, id=self.kwargs.get('review_id'))
         return review.comments.all()
-
 
     #def perform_create(self, serializer):
     #    title_id = self.kwargs.get('title_id')
@@ -139,7 +143,6 @@ class CommentViewSet(ModelViewSet):
     #     title_id = self.kwargs.get('title_id')
     #     title = get_object_or_404(Title, id=title_id)
     #     serializer.save(author=self.request.user, title=title)
-
 
 
 class UserCreateViewSet(APIView):
@@ -227,7 +230,7 @@ class UserViewSet(viewsets.ModelViewSet):
         methods=['get', 'patch'],
         url_path='me',
         url_name='me',
-        permission_classes=(permissions.IsAuthenticated,),
+        permission_classes=(IsAuthenticated,),
     )
     def get_me(self, request):
         if request.method == 'PATCH':
