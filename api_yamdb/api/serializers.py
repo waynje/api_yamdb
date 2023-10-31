@@ -169,4 +169,3 @@ class UserGetTokenSerializer(serializers.Serializer):
         max_length=150,
         required=True
     )
-
