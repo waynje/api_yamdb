@@ -127,10 +127,10 @@ class CommentViewSet(ModelViewSet):
         review = get_object_or_404(Review, id=self.kwargs.get('review_id'))
         return review.comments.all()
 
-    def perform_create(self, serializer):
-        title_id = self.kwargs.get('title_id')
-        title = get_object_or_404(Title, id=title_id)
-        serializer.save(author=self.request.user, title=title)
+    # def perform_create(self, serializer):
+    #     title_id = self.kwargs.get('title_id')
+    #     title = get_object_or_404(Title, id=title_id)
+    #     serializer.save(author=self.request.user, title=title)
 
 
 class UserCreateViewSet(APIView):
