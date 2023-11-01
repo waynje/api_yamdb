@@ -24,8 +24,17 @@ class IsAdminModeratorAuthorOrReadOnly(BasePermission):
                 or request.user.is_admin)
 
 
+# class AdminOnly(permissions.BasePermission):
+#     def has_permission(self, request, view):
+#         return (request.user.is_authenticated
+#                 and (request.user.is_admin
+#                      or request.user.is_superuser))
+
 class AdminOnly(permissions.BasePermission):
+    '''Разрешение для администратора и суперпользователя'''
     def has_permission(self, request, view):
-        return (request.user.is_authenticated
-                and (request.user.is_admin
-                     or request.user.is_superuser))
+        return (
+            request.user.is_authenticated and (
+                request.user.is_admin
+                or request.user.is_staff
+                or request.user.is_superuser))
