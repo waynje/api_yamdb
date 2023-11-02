@@ -5,6 +5,7 @@ from django.forms import ValidationError
 from user.models import User
 from django.core.validators import MaxValueValidator, MinValueValidator
 
+
 def year_validator(value):
     if value > datetime.datetime.now().year:
         raise ValidationError('Год выпуска не может быть больше текущего!')

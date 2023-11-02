@@ -1,4 +1,5 @@
 from rest_framework import serializers
+import re
 from django.shortcuts import get_object_or_404
 from reviews.models import (
     Comment,
@@ -117,25 +118,39 @@ class CommentSerializer(serializers.ModelSerializer):
 
 
 class UserCreateSerializer(serializers.ModelSerializer):
+    email = serializers.EmailField(max_length=254, required=True)
+    username = serializers.CharField(max_length=150, required=True)
 
     class Meta:
         model = User
         fields = ('username', 'email')
 
-    def validate(self, data):
-        username = data.get('username')
-        email = data.get('email')
-        if User.objects.filter(username=username).exists():
+    def create(self, validated_data):
+
+        email = validated_data.get('email')
+        username = validated_data.get('username')
+        if User.objects.filter(email=email, username=username).exists():
+            return User.objects.filter(email=email, username=username)
+        else:
+            if (User.objects.filter(username=username).exists()
+                    or User.objects.filter(email=email).exists()):
+                raise serializers.ValidationError(
+                    {'username': ['Не ваша почта или ник!']}
+                )
+        return User.objects.create_user(
+            email=email,
+            username=username,
+            is_active=False,
+        )
+
+    def validate_username(self, username):
+
+        if username == 'me':
+            raise serializers.ValidationError('Недопустимый username!')
+        if not re.match(r'^[\w.@+-]+\Z', username):
             raise serializers.ValidationError(
-                'Пользователь с таким логином уже существует, укажите другой'
-            )
-        if User.objects.filter(email=email).exists():
-            raise serializers.ValidationError(
-                'Пользователь с таким email уже существует, укажите другой'
-            )
-        if data.get('username') == 'me':
-            raise serializers.ValidationError('Пожалуйста, используйте другое имя!')
-        return data
+                'Недопустимые символы')
+        return username
 
 
 class UserSerializer(serializers.ModelSerializer):
