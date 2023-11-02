@@ -14,7 +14,6 @@ class User(AbstractUser):
         (ADMIN, "Администратор"),
     )
 
-       
     username = models.CharField(
         max_length=150,
         verbose_name='Имя пользователя',
@@ -48,6 +47,9 @@ class User(AbstractUser):
         verbose_name='Роль',
         choices=ROLE_CHOICES,
         default=USER
+    )
+    confirmation_code = models.CharField(
+        'Код подтверждения', max_length=50, blank=True
     )
 
     class Meta:
