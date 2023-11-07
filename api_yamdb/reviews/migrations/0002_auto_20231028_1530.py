@@ -5,20 +5,37 @@ from django.db import migrations, models
 
 
 class Migration(migrations.Migration):
-
     dependencies = [
-        ('reviews', '0001_initial'),
+        ("reviews", "0001_initial"),
     ]
 
     operations = [
         migrations.AlterField(
-            model_name='category',
-            name='slug',
-            field=models.SlugField(unique=True, validators=[django.core.validators.RegexValidator(message='Слаг категории содержит недопустимый символ', regex='^[-a-zA-Z0-9_]+$')], verbose_name='Слаг'),
+            model_name="category",
+            name="slug",
+            field=models.SlugField(
+                unique=True,
+                validators=[
+                    django.core.validators.RegexValidator(
+                        message="Слаг категории содержит недопустимый символ",
+                        regex="^[-a-zA-Z0-9_]+$",
+                    )
+                ],
+                verbose_name="Слаг",
+            ),
         ),
         migrations.AlterField(
-            model_name='genre',
-            name='slug',
-            field=models.SlugField(unique=True, validators=[django.core.validators.RegexValidator(message='Слаг категории содержит недопустимый символ', regex='^[-a-zA-Z0-9_]+$')], verbose_name='Слаг'),
+            model_name="genre",
+            name="slug",
+            field=models.SlugField(
+                unique=True,
+                validators=[
+                    django.core.validators.RegexValidator(
+                        message="Слаг категории содержит недопустимый символ",
+                        regex="^[-a-zA-Z0-9_]+$",
+                    )
+                ],
+                verbose_name="Слаг",
+            ),
         ),
     ]
