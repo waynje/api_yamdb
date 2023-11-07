@@ -1,56 +1,31 @@
-from django.db.models import Avg
-from django.shortcuts import get_object_or_404
-from django_filters.rest_framework import DjangoFilterBackend
-from rest_framework import viewsets, filters, status, views
-from rest_framework.mixins import CreateModelMixin
+from django.conf import settings
 from django.contrib.auth import get_user_model
 from django.contrib.auth.tokens import default_token_generator
 from django.core.mail import send_mail
+from django.db.models import Avg
+from django.shortcuts import get_object_or_404
+from django_filters.rest_framework import DjangoFilterBackend
+from rest_framework import filters, serializers, status, views, viewsets
 from rest_framework.decorators import action
-from django.conf import settings
-from rest_framework_simplejwt.tokens import AccessToken
-from rest_framework.permissions import (
-    AllowAny,
-    IsAuthenticated,
-)
-from rest_framework.views import APIView
-from rest_framework.viewsets import ModelViewSet, GenericViewSet
-from rest_framework.filters import (
-    SearchFilter,
-    OrderingFilter,
-)
-from rest_framework.mixins import (
-    ListModelMixin,
-    CreateModelMixin,
-    DestroyModelMixin,
-)
+from rest_framework.filters import OrderingFilter, SearchFilter
+from rest_framework.mixins import (CreateModelMixin, DestroyModelMixin,
+                                   ListModelMixin)
 from rest_framework.pagination import PageNumberPagination
+from rest_framework.permissions import AllowAny, IsAuthenticated
 from rest_framework.response import Response
+from rest_framework.views import APIView
+from rest_framework.viewsets import GenericViewSet, ModelViewSet
+from rest_framework_simplejwt.tokens import AccessToken
+from reviews.models import Category, Genre, Review, Title
 
 from .filters import TitlesFilter
-from .permissions import (
-    IsAdminOrReadOnly,
-    IsAdminModeratorAuthorOrReadOnly,
-    AdminOnly,
-)
-from .serializers import (
-    CommentSerializer,
-    CategorySerializer,
-    GenreSerializer,
-    TitleGetSerializer,
-    TitleWriteSerliazer,
-    ReviewSerializer,
-    UserCreateSerializer,
-    UserSerializer,
-    UserGetTokenSerializer,
-)
-from reviews.models import (
-    Category,
-    Genre,
-    Review,
-    Title,
-)
-
+from .permissions import (AdminOnly, IsAdminModeratorAuthorOrReadOnly,
+                          IsAdminOrReadOnly)
+from .serializers import (CategorySerializer, CommentSerializer,
+                          GenreSerializer, ReviewSerializer,
+                          TitleGetSerializer, TitleWriteSerliazer,
+                          UserCreateSerializer, UserGetTokenSerializer,
+                          UserSerializer)
 
 User = get_user_model()
 
@@ -100,6 +75,15 @@ class ReviewViewSet(TitleReviewCommentMixin):
         title = get_object_or_404(Title, id=self.kwargs.get("title_id"))
         return title.reviews.all()
 
+    def perform_create(self, serializer):
+        title = get_object_or_404(Title, id=self.kwargs['title_id'])
+        author = self.request.user
+        if Review.objects.filter(title=title, author=author).exists():
+                raise serializers.ValidationError(
+                    "Отзыв на это произведение уже есть"
+                )
+        serializer.save(author=author, title=title)
+
 
 class CommentViewSet(TitleReviewCommentMixin):
     serializer_class = CommentSerializer
@@ -109,15 +93,11 @@ class CommentViewSet(TitleReviewCommentMixin):
         review = get_object_or_404(Review, id=self.kwargs.get("review_id"))
         return review.comments.all()
 
-    # def perform_create(self, serializer):
-    #    title_id = self.kwargs.get('title_id')
-    #    title = get_object_or_404(Title, id=title_id)
-    #    serializer.save(author=self.request.user, title=title)
-
-    # def perform_create(self, serializer):
-    #     title_id = self.kwargs.get('title_id')
-    #     title = get_object_or_404(Title, id=title_id)
-    #     serializer.save(author=self.request.user, title=title)
+    def perform_create(self, serializer):
+        title_id = self.kwargs.get('title_id')
+        review_id = self.kwargs.get('review_id')
+        review = get_object_or_404(Review, id=review_id, title=title_id)
+        serializer.save(author=self.request.user, review=review)
 
 
 class UserCreateViewSet(APIView):

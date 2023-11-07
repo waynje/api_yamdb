@@ -10,6 +10,8 @@ from django.forms import ValidationError
 from user.models import User
 
 
+LENGTH_COMMENT = 20
+
 def year_validator(value):
     if value > datetime.datetime.now().year:
         raise ValidationError("Год выпуска не может быть больше текущего!")
@@ -169,4 +171,4 @@ class Comment(models.Model):
         verbose_name_plural = "Комментарии"
 
     def __str__(self):
-        return f"{self.text}"
+        return f"{self.text}"[:LENGTH_COMMENT]
