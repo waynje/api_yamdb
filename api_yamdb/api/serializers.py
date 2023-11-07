@@ -81,19 +81,6 @@ class ReviewSerializer(serializers.ModelSerializer):
         )
         read_only_fields = ("title",)
 
-    def validate(self, data):
-        if self.context["request"].method == "POST":
-            title_id = self.context["view"].kwargs["title_id"]
-            title = get_object_or_404(Title, id=title_id)
-            author = self.context["request"].user
-            if Review.objects.filter(title=title, author=author).exists():
-                raise serializers.ValidationError(
-                    "Отзыв на это произведение уже есть"
-                )
-            data["author"] = author
-            data["title"] = title
-        return data
-
 
 class CommentSerializer(serializers.ModelSerializer):
     author = serializers.SlugRelatedField(
