@@ -40,8 +40,8 @@ from .serializers import (
     CommentSerializer,
     CategorySerializer,
     GenreSerializer,
-    TitleGETSerializer,
-    TitleNOTSAFESerliazer,
+    TitleGetSerializer,
+    TitleWriteSerliazer,
     ReviewSerializer,
     UserCreateSerializer,
     UserSerializer,
@@ -91,7 +91,6 @@ class GenreViewSet(CategoryGenreMixin):
 
 class TitleViewSet(TitleReviewCommentMixin):
 
-    # Тут изменить, когда появится модель Review
     queryset = Title.objects.annotate(rating=Avg('reviews__score'))
     permission_classes = (IsAdminOrReadOnly,)
     filter_backends = (DjangoFilterBackend, OrderingFilter)
@@ -99,21 +98,9 @@ class TitleViewSet(TitleReviewCommentMixin):
     filterset_class = TitlesFilter
 
     def get_serializer_class(self):
-        if self.request.method in ['DELETE']:
-            return TitleNOTSAFESerliazer
-        return TitleGETSerializer
-
-    def perform_create(self, serializer):
-        category_slug = self.request.data.get('category')
-        category = get_object_or_404(Category, slug=category_slug)
-
-        genre_slugs = self.request.data.getlist('genre')
-        genres = Genre.objects.filter(slug__in=genre_slugs)
-
-        serializer.save(category=category, genre=genres)
-
-    def perform_update(self, serializer):
-        self.perform_create(serializer)
+        if self.action in ('list', 'retrieve'):
+            return TitleGetSerializer
+        return TitleWriteSerliazer
 
 
 class ReviewViewSet(TitleReviewCommentMixin):
