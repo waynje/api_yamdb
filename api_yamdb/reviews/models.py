@@ -1,9 +1,13 @@
 import datetime
+
+from django.core.validators import (
+    MaxValueValidator,
+    MinValueValidator,
+)
 from django.db import models
-from django.core.validators import RegexValidator
 from django.forms import ValidationError
+
 from user.models import User
-from django.core.validators import MaxValueValidator, MinValueValidator
 
 
 def year_validator(value):
@@ -25,13 +29,8 @@ class Category(models.Model):
         verbose_name='Название',
     )
     slug = models.SlugField(
-        max_length=50,
         verbose_name='Слаг',
         unique=True,
-        validators=[RegexValidator(
-            regex=r'^[-a-zA-Z0-9_]+$',
-            message='Слаг категории содержит недопустимый символ'
-        )]
     )
 
     class Meta:
@@ -49,13 +48,8 @@ class Genre(models.Model):
         verbose_name='Название',
     )
     slug = models.SlugField(
-        max_length=50,
         verbose_name='Слаг',
         unique=True,
-        validators=[RegexValidator(
-            regex=r'^[-a-zA-Z0-9_]+$',
-            message='Слаг категории содержит недопустимый символ'
-        )]
     )
 
     class Meta:
@@ -71,12 +65,9 @@ class Title(models.Model):
     name = models.CharField(
         max_length=256,
         verbose_name='Название',
-        blank=False,
     )
     year = models.PositiveIntegerField(
         validators=[year_validator],
-        blank=False,
-        null=False,
         verbose_name='Год выпуска',
     )
     description = models.TextField(

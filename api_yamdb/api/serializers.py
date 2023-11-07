@@ -1,6 +1,8 @@
-from rest_framework import serializers
 import re
+
+from rest_framework import serializers
 from django.shortcuts import get_object_or_404
+
 from reviews.models import (
     Comment,
     Category,
@@ -26,7 +28,7 @@ class GenreSerializer(serializers.ModelSerializer):
         exclude = ('id',)
 
 
-class TitleGETSerializer(serializers.ModelSerializer):
+class TitleGetSerializer(serializers.ModelSerializer):
 
     rating = serializers.IntegerField(read_only=True)
     genre = GenreSerializer(
@@ -48,7 +50,7 @@ class TitleGETSerializer(serializers.ModelSerializer):
         model = Title
 
 
-class TitleNOTSAFESerliazer(serializers.ModelSerializer):
+class TitleWriteSerliazer(serializers.ModelSerializer):
 
     year = serializers.IntegerField(
         validators=[year_validator]
