@@ -79,9 +79,8 @@ class ReviewViewSet(TitleReviewCommentMixin):
         title = get_object_or_404(Title, id=self.kwargs['title_id'])
         author = self.request.user
         if Review.objects.filter(title=title, author=author).exists():
-                raise serializers.ValidationError(
-                    "Отзыв на это произведение уже есть"
-                )
+            raise serializers.ValidationError(
+                "Отзыв на это произведение уже есть")
         serializer.save(author=author, title=title)
 
 
