@@ -6,17 +6,17 @@ import django.utils.timezone
 
 class Migration(migrations.Migration):
     dependencies = [
-        ("reviews", "0004_auto_20231029_1510"),
+        ('reviews', '0004_auto_20231029_1510'),
     ]
 
     operations = [
         migrations.AddField(
-            model_name="comment",
-            name="pub_date",
+            model_name='comment',
+            name='pub_date',
             field=models.DateTimeField(
                 auto_now_add=True,
                 default=django.utils.timezone.now,
-                verbose_name="Дата",
+                verbose_name='Дата',
             ),
             preserve_default=False,
         ),
