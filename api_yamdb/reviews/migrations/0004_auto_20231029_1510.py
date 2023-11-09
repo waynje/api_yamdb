@@ -9,53 +9,53 @@ import reviews.models
 class Migration(migrations.Migration):
     dependencies = [
         migrations.swappable_dependency(settings.AUTH_USER_MODEL),
-        ("reviews", "0003_merge_0002_auto_20231028_1530_0002_review"),
+        ('reviews', '0003_merge_0002_auto_20231028_1530_0002_review'),
     ]
 
     operations = [
         migrations.AlterField(
-            model_name="review",
-            name="score",
+            model_name='review',
+            name='score',
             field=models.IntegerField(
                 validators=[reviews.models.validate_score],
-                verbose_name="Оценка от 1 до 10",
+                verbose_name='Оценка от 1 до 10',
             ),
         ),
         migrations.CreateModel(
-            name="Comment",
+            name='Comment',
             fields=[
                 (
-                    "id",
+                    'id',
                     models.BigAutoField(
                         auto_created=True,
                         primary_key=True,
                         serialize=False,
-                        verbose_name="ID",
+                        verbose_name='ID',
                     ),
                 ),
-                ("text", models.TextField(verbose_name="Текст комментария")),
+                ('text', models.TextField(verbose_name='Текст комментария')),
                 (
-                    "author",
+                    'author',
                     models.ForeignKey(
                         on_delete=django.db.models.deletion.CASCADE,
-                        related_name="comments",
+                        related_name='comments',
                         to=settings.AUTH_USER_MODEL,
-                        verbose_name="Автор",
+                        verbose_name='Автор',
                     ),
                 ),
                 (
-                    "review",
+                    'review',
                     models.ForeignKey(
                         on_delete=django.db.models.deletion.CASCADE,
-                        related_name="comments",
-                        to="reviews.review",
-                        verbose_name="Отзыв",
+                        related_name='comments',
+                        to='reviews.review',
+                        verbose_name='Отзыв',
                     ),
                 ),
             ],
             options={
-                "verbose_name": "Комментарий",
-                "verbose_name_plural": "Комментарии",
+                'verbose_name': 'Комментарий',
+                'verbose_name_plural': 'Комментарии',
             },
         ),
     ]

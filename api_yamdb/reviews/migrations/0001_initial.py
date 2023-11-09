@@ -14,163 +14,163 @@ class Migration(migrations.Migration):
 
     operations = [
         migrations.CreateModel(
-            name="Category",
+            name='Category',
             fields=[
                 (
-                    "id",
+                    'id',
                     models.BigAutoField(
                         auto_created=True,
                         primary_key=True,
                         serialize=False,
-                        verbose_name="ID",
+                        verbose_name='ID',
                     ),
                 ),
                 (
-                    "name",
-                    models.CharField(max_length=256, verbose_name="Название"),
+                    'name',
+                    models.CharField(max_length=256, verbose_name='Название'),
                 ),
                 (
-                    "slug",
+                    'slug',
                     models.SlugField(
                         unique=True,
                         validators=[
                             django.core.validators.RegexValidator(
-                                re.compile("^[-a-zA-Z0-9_]+\\Z"),
-                                "Enter a valid “slug” consisting of letters, numbers, underscores or hyphens.",
-                                "invalid",
+                                re.compile('^[-a-zA-Z0-9_]+\\Z'),
+                                'Enter a valid “slug” consisting of letters, numbers, underscores or hyphens.',
+                                'invalid',
                             )
                         ],
-                        verbose_name="Слаг",
+                        verbose_name='Слаг',
                     ),
                 ),
             ],
             options={
-                "verbose_name": "Категория",
-                "verbose_name_plural": "Категории",
-                "ordering": ("name",),
+                'verbose_name': 'Категория',
+                'verbose_name_plural': 'Категории',
+                'ordering': ('name',),
             },
         ),
         migrations.CreateModel(
-            name="Genre",
+            name='Genre',
             fields=[
                 (
-                    "id",
+                    'id',
                     models.BigAutoField(
                         auto_created=True,
                         primary_key=True,
                         serialize=False,
-                        verbose_name="ID",
+                        verbose_name='ID',
                     ),
                 ),
                 (
-                    "name",
-                    models.CharField(max_length=75, verbose_name="Название"),
+                    'name',
+                    models.CharField(max_length=75, verbose_name='Название'),
                 ),
                 (
-                    "slug",
+                    'slug',
                     models.SlugField(
                         unique=True,
                         validators=[
                             django.core.validators.RegexValidator(
-                                re.compile("^[-a-zA-Z0-9_]+\\Z"),
-                                "Enter a valid “slug” consisting of letters, numbers, underscores or hyphens.",
-                                "invalid",
+                                re.compile('^[-a-zA-Z0-9_]+\\Z'),
+                                'Enter a valid “slug” consisting of letters, numbers, underscores or hyphens.',
+                                'invalid',
                             )
                         ],
-                        verbose_name="Слаг",
+                        verbose_name='Слаг',
                     ),
                 ),
             ],
             options={
-                "verbose_name": "Жанр",
-                "verbose_name_plural": "Жанры",
-                "ordering": ("name",),
+                'verbose_name': 'Жанр',
+                'verbose_name_plural': 'Жанры',
+                'ordering': ('name',),
             },
         ),
         migrations.CreateModel(
-            name="GenreTitle",
+            name='GenreTitle',
             fields=[
                 (
-                    "id",
+                    'id',
                     models.BigAutoField(
                         auto_created=True,
                         primary_key=True,
                         serialize=False,
-                        verbose_name="ID",
+                        verbose_name='ID',
                     ),
                 ),
                 (
-                    "genre",
+                    'genre',
                     models.ForeignKey(
                         on_delete=django.db.models.deletion.CASCADE,
-                        to="reviews.genre",
-                        verbose_name="Жанр",
+                        to='reviews.genre',
+                        verbose_name='Жанр',
                     ),
                 ),
             ],
             options={
-                "verbose_name": "Жанр и произведение",
-                "verbose_name_plural": "Жанры и произведения",
-                "ordering": ("id",),
+                'verbose_name': 'Жанр и произведение',
+                'verbose_name_plural': 'Жанры и произведения',
+                'ordering': ('id',),
             },
         ),
         migrations.CreateModel(
-            name="Title",
+            name='Title',
             fields=[
                 (
-                    "id",
+                    'id',
                     models.BigAutoField(
                         auto_created=True,
                         primary_key=True,
                         serialize=False,
-                        verbose_name="ID",
+                        verbose_name='ID',
                     ),
                 ),
                 (
-                    "name",
-                    models.CharField(max_length=256, verbose_name="Название"),
+                    'name',
+                    models.CharField(max_length=256, verbose_name='Название'),
                 ),
                 (
-                    "year",
+                    'year',
                     models.PositiveIntegerField(
                         validators=[reviews.models.year_validator],
-                        verbose_name="Год выпуска",
+                        verbose_name='Год выпуска',
                     ),
                 ),
-                ("description", models.TextField(verbose_name="Описание")),
+                ('description', models.TextField(verbose_name='Описание')),
                 (
-                    "category",
+                    'category',
                     models.ForeignKey(
                         null=True,
                         on_delete=django.db.models.deletion.SET_NULL,
-                        related_name="titles",
-                        to="reviews.category",
-                        verbose_name="Категория",
+                        related_name='titles',
+                        to='reviews.category',
+                        verbose_name='Категория',
                     ),
                 ),
                 (
-                    "genre",
+                    'genre',
                     models.ManyToManyField(
-                        related_name="titles",
-                        through="reviews.GenreTitle",
-                        to="reviews.Genre",
-                        verbose_name="Жанр",
+                        related_name='titles',
+                        through='reviews.GenreTitle',
+                        to='reviews.Genre',
+                        verbose_name='Жанр',
                     ),
                 ),
             ],
             options={
-                "verbose_name": "Произведение",
-                "verbose_name_plural": "Произведения",
-                "ordering": ("-year", "name"),
+                'verbose_name': 'Произведение',
+                'verbose_name_plural': 'Произведения',
+                'ordering': ('-year', 'name'),
             },
         ),
         migrations.AddField(
-            model_name="genretitle",
-            name="title",
+            model_name='genretitle',
+            name='title',
             field=models.ForeignKey(
                 on_delete=django.db.models.deletion.CASCADE,
-                to="reviews.title",
-                verbose_name="Произведение",
+                to='reviews.title',
+                verbose_name='Произведение',
             ),
         ),
     ]

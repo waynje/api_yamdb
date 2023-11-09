@@ -30,7 +30,7 @@ tests/test_01_users.py::Test01UserAPI::test_04_02_users_get_search PASSED [ 27%]
 tests/test_01_users.py::Test01UserAPI::test_04_01_users_get_admin_only FAILED [ 28%]
 tests/test_01_users.py::Test01UserAPI::test_05_01_users_post_admin_bad_requests PASSED [ 30%]
 tests/test_01_users.py::Test01UserAPI::test_05_02_users_post_admin_user_creation[data0-] PASSED [ 31%]
-tests/test_01_users.py::Test01UserAPI::test_05_02_users_post_admin_user_creation[data1-без указания роли нового пользователя ] PASSED [ 32%]
+tests/test_01_users.py::Test01UserAPI::test_05_02_users_post_admin_user_creation[data1-пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ ] PASSED [ 32%]
 tests/test_01_users.py::Test01UserAPI::test_05_03_users_post_response_has_data PASSED [ 33%]
 tests/test_01_users.py::Test01UserAPI::test_05_04_users_post_user_superuser PASSED [ 35%]
 tests/test_01_users.py::Test01UserAPI::test_06_users_username_get_admin FAILED [ 36%]
@@ -95,13 +95,13 @@ client = <django.test.client.Client object at 0x0000025077BE4B50>
     def test_00_obtain_jwt_token_invalid_data(self, client):
         response = client.post(self.URL_TOKEN)
         assert response.status_code != HTTPStatus.NOT_FOUND, (
-            f'Эндпоинт `{self.URL_TOKEN}` не найдена. Проверьте настройки в '
+            f'пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ `{self.URL_TOKEN}` пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ. пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅ '
             '*urls.py*.'
         )
     
         assert response.status_code == HTTPStatus.BAD_REQUEST, (
-            'Проверьте, что POST-запрос без данных, отправленный на эндпоинт '
-            f'`{self.URL_TOKEN}`, возвращает ответ со статусом 400.'
+            'пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ, пїЅпїЅпїЅ POST-пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ, пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ '
+            f'`{self.URL_TOKEN}`, пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ 400.'
         )
     
         invalid_data = {
@@ -109,9 +109,9 @@ client = <django.test.client.Client object at 0x0000025077BE4B50>
         }
         response = client.post(self.URL_TOKEN, data=invalid_data)
         assert response.status_code == HTTPStatus.BAD_REQUEST, (
-            'Проверьте, что POST-запрос, отправленный на эндпоинт '
-            f'`{self.URL_TOKEN}`и не содержащий информации о `username`, '
-            'возвращает ответ со статусом 400.'
+            'пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ, пїЅпїЅпїЅ POST-пїЅпїЅпїЅпїЅпїЅпїЅ, пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ '
+            f'`{self.URL_TOKEN}`пїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅ `username`, '
+            'пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ 400.'
         )
     
         invalid_data = {
@@ -120,9 +120,9 @@ client = <django.test.client.Client object at 0x0000025077BE4B50>
         }
         response = client.post(self.URL_TOKEN, data=invalid_data)
         assert response.status_code == HTTPStatus.NOT_FOUND, (
-            'Проверьте, что POST-запрос с несуществующим `username`, '
-            f'отправленный на эндпоинт `{self.URL_TOKEN}`, возвращает ответ '
-            'со статусом 404.'
+            'пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ, пїЅпїЅпїЅ POST-пїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ `username`, '
+            f'пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ `{self.URL_TOKEN}`, пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ '
+            'пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ 404.'
         )
     
         valid_data = {
@@ -131,8 +131,8 @@ client = <django.test.client.Client object at 0x0000025077BE4B50>
         }
         response = client.post(self.URL_SIGNUP, data=valid_data)
         assert response.status_code == HTTPStatus.OK, (
-            'Проверьте, что POST-запрос с корректными данными, отправленный '
-            f'на `{self.URL_SIGNUP}`, возвращает ответ со статусом 200.'
+            'пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ, пїЅпїЅпїЅ POST-пїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ, пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ '
+            f'пїЅпїЅ `{self.URL_SIGNUP}`, пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ 200.'
         )
     
         invalid_data = {
@@ -141,11 +141,11 @@ client = <django.test.client.Client object at 0x0000025077BE4B50>
         }
         response = client.post(self.URL_TOKEN, data=invalid_data)
 >       assert response.status_code == HTTPStatus.BAD_REQUEST, (
-            'Проверьте, что POST-запрос с корректным `username` и невалидным '
-            f'`confirmation_code`, отправленный на эндпоинт `{self.URL_TOKEN}`'
-            ', возвращает ответ со статусом 400.'
+            'пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ, пїЅпїЅпїЅ POST-пїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ `username` пїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ '
+            f'`confirmation_code`, пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ `{self.URL_TOKEN}`'
+            ', пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ 400.'
         )
-E       AssertionError: Проверьте, что POST-запрос с корректным `username` и невалидным `confirmation_code`, отправленный на эндпоинт `/api/v1/auth/token/`, возвращает ответ со статусом 400.
+E       AssertionError: пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ, пїЅпїЅпїЅ POST-пїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ `username` пїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ `confirmation_code`, пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ `/api/v1/auth/token/`, пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ 400.
 E       assert 201 == <HTTPStatus.BAD_REQUEST: 400>
 E         +201
 E         -<HTTPStatus.BAD_REQUEST: 400>
@@ -167,18 +167,18 @@ client = <django.test.client.Client object at 0x0000025077BF2610>
         }
         response = client.post(self.URL_SIGNUP, data=valid_data)
         assert response.status_code == HTTPStatus.OK, (
-            'Проверьте, что POST-запрос с корректными данными, отправленный '
-            f'на эндпоинт `{self.URL_SIGNUP}`, возвращает ответ со статусом '
+            'пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ, пїЅпїЅпїЅ POST-пїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ, пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ '
+            f'пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ `{self.URL_SIGNUP}`, пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ '
             '200.'
         )
     
         response = client.post(self.URL_SIGNUP, data=valid_data)
 >       assert response.status_code == HTTPStatus.OK, (
-            f'Проверьте, что повторный POST-запрос к `{self.URL_SIGNUP}` с '
-            'данными зарегистрированного пользователя возвращает ответ со '
-            'статусом 200.'
+            f'пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ, пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ POST-пїЅпїЅпїЅпїЅпїЅпїЅ пїЅ `{self.URL_SIGNUP}` пїЅ '
+            'пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅ '
+            'пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ 200.'
         )
-E       AssertionError: Проверьте, что повторный POST-запрос к `/api/v1/auth/signup/` с данными зарегистрированного пользователя возвращает ответ со статусом 200.
+E       AssertionError: пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ, пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ POST-пїЅпїЅпїЅпїЅпїЅпїЅ пїЅ `/api/v1/auth/signup/` пїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ 200.
 E       assert 400 == <HTTPStatus.OK: 200>
 E         +400
 E         -<HTTPStatus.OK: 200>
@@ -203,18 +203,18 @@ django_user_model = <class 'user.models.User'>
         }
         admin_client.post(self.URL_ADMIN_CREATE_USER, data=valid_data)
         assert (user_cnt + 1) == django_user_model.objects.count(), (
-            'Если POST-запрос администратора на эндпоинт '
-            f'`{self.URL_ADMIN_CREATE_USER}` содержит корректные данные - '
-            'должен быть создан новый пользователь.'
+            'пїЅпїЅпїЅпїЅ POST-пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ '
+            f'`{self.URL_ADMIN_CREATE_USER}` пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ - '
+            'пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ.'
         )
     
         response = client.post(self.URL_SIGNUP, data=valid_data)
 >       assert response.status_code == HTTPStatus.OK, (
-            f'Проверьте, что POST-запрос к {self.URL_SIGNUP} с данными '
-            'пользователя, созданного администратором,  возвращает ответ '
-            'со статусом 200.'
+            f'пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ, пїЅпїЅпїЅ POST-пїЅпїЅпїЅпїЅпїЅпїЅ пїЅ {self.URL_SIGNUP} пїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ '
+            'пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ, пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ,  пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ '
+            'пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ 200.'
         )
-E       AssertionError: Проверьте, что POST-запрос к /api/v1/auth/signup/ с данными пользователя, созданного администратором,  возвращает ответ со статусом 200.
+E       AssertionError: пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ, пїЅпїЅпїЅ POST-пїЅпїЅпїЅпїЅпїЅпїЅ пїЅ /api/v1/auth/signup/ пїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ, пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ,  пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ 200.
 E       assert 400 == <HTTPStatus.OK: 200>
 E         +400
 E         -<HTTPStatus.OK: 200>
@@ -232,15 +232,15 @@ moderator_client = <rest_framework.test.APIClient object at 0x0000025078C59CA0>
         for client in (user_client, moderator_client):
             response = client.get(self.USERS_URL)
             assert response.status_code != HTTPStatus.NOT_FOUND, (
-                f'Эндпоинт `{self.USERS_URL}` не найден. Проверьте настройки '
-                'в *urls.py*.'
+                f'пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ `{self.USERS_URL}` пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ. пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ '
+                'пїЅ *urls.py*.'
             )
 >           assert response.status_code == HTTPStatus.FORBIDDEN, (
-                f'Проверьте, что GET-запрос к `{self.USERS_URL}` от '
-                'пользователя, не являющегося администратором, возвращает '
-                'ответ со статусом 403.'
+                f'пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ, пїЅпїЅпїЅ GET-пїЅпїЅпїЅпїЅпїЅпїЅ пїЅ `{self.USERS_URL}` пїЅпїЅ '
+                'пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ, пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ, пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ '
+                'пїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ 403.'
             )
-E           AssertionError: Проверьте, что GET-запрос к `/api/v1/users/` от пользователя, не являющегося администратором, возвращает ответ со статусом 403.
+E           AssertionError: пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ, пїЅпїЅпїЅ GET-пїЅпїЅпїЅпїЅпїЅпїЅ пїЅ `/api/v1/users/` пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ, пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ, пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ 403.
 E           assert 200 == <HTTPStatus.FORBIDDEN: 403>
 E             +200
 E             -<HTTPStatus.FORBIDDEN: 403>
@@ -255,12 +255,12 @@ moderator = <User: TestModerator>
     def test_06_users_username_get_admin(self, admin_client, moderator):
         response = admin_client.get(f'{self.USERS_URL}{moderator.username}/')
 >       assert response.status_code != HTTPStatus.NOT_FOUND, (
-            f'Эндпоинт `{self.USERS_URL}'
-            '{username}/` не найден. Проверьте настройки в *urls.py*.'
+            f'пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ `{self.USERS_URL}'
+            '{username}/` пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ. пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅ *urls.py*.'
         )
-E       AssertionError: Эндпоинт `/api/v1/users/{username}/` не найден. Проверьте настройки в *urls.py*.
+E       AssertionError: пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ `/api/v1/users/{username}/` пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ. пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅ *urls.py*.
 E       assert 404 != <HTTPStatus.NOT_FOUND: 404>
-E        +  where 404 = <Response status_code=404, "application/json">.status_code
+E        +  where 404 = <Response status_code=404, 'application/json'>.status_code
 E        +  and   <HTTPStatus.NOT_FOUND: 404> = HTTPStatus.NOT_FOUND
 
 tests\test_01_users.py:279: AssertionError
@@ -278,12 +278,12 @@ admin = <User: TestAdmin>
         for test_client in (user_client, moderator_client):
             response = test_client.get(f'{self.USERS_URL}{admin.username}/')
 >           assert response.status_code != HTTPStatus.NOT_FOUND, (
-                f'Эндпоинт `{self.USERS_URL}'
-                '{username}/` не найден. Проверьте настройки в *urls.py*.'
+                f'пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ `{self.USERS_URL}'
+                '{username}/` пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ. пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅ *urls.py*.'
             )
-E           AssertionError: Эндпоинт `/api/v1/users/{username}/` не найден. Проверьте настройки в *urls.py*.
+E           AssertionError: пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ `/api/v1/users/{username}/` пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ. пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅ *urls.py*.
 E           assert 404 != <HTTPStatus.NOT_FOUND: 404>
-E            +  where 404 = <Response status_code=404, "application/json">.status_code
+E            +  where 404 = <Response status_code=404, 'application/json'>.status_code
 E            +  and   <HTTPStatus.NOT_FOUND: 404> = HTTPStatus.NOT_FOUND
 
 tests\test_01_users.py:305: AssertionError
@@ -307,12 +307,12 @@ django_user_model = <class 'user.models.User'>
             f'{self.USERS_URL}{user.username}/', data=data
         )
 >       assert response.status_code == HTTPStatus.OK, (
-            'Если PATCH-запрос администратора, отправленный к '
+            'пїЅпїЅпїЅпїЅ PATCH-пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ, пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅ '
             f'`{self.USERS_URL}'
-            '{username}/`, содержит корректные данные - должен вернуться '
-            'ответ со статусом 200.'
+            '{username}/`, пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ - пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ '
+            'пїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ 200.'
         )
-E       AssertionError: Если PATCH-запрос администратора, отправленный к `/api/v1/users/{username}/`, содержит корректные данные - должен вернуться ответ со статусом 200.
+E       AssertionError: пїЅпїЅпїЅпїЅ PATCH-пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ, пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅ `/api/v1/users/{username}/`, пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ - пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ 200.
 E       assert 404 == <HTTPStatus.OK: 200>
 E         +404
 E         -<HTTPStatus.OK: 200>
@@ -334,11 +334,11 @@ user = <User: TestUser>, django_user_model = <class 'user.models.User'>
             f'{self.USERS_URL}{user.username}/', data=self.PATCH_DATA
         )
 >       assert response.status_code == HTTPStatus.FORBIDDEN, (
-            f'Проверьте, что PATCH-запрос модератора к `{self.USERS_URL}'
-            '{username}/` для профиля другого пользователя возвращает ответ '
-            'со статусом 403.'
+            f'пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ, пїЅпїЅпїЅ PATCH-пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅ `{self.USERS_URL}'
+            '{username}/` пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ '
+            'пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ 403.'
         )
-E       AssertionError: Проверьте, что PATCH-запрос модератора к `/api/v1/users/{username}/` для профиля другого пользователя возвращает ответ со статусом 403.
+E       AssertionError: пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ, пїЅпїЅпїЅ PATCH-пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅ `/api/v1/users/{username}/` пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ 403.
 E       assert 404 == <HTTPStatus.FORBIDDEN: 403>
 E         +404
 E         -<HTTPStatus.FORBIDDEN: 403>
@@ -358,11 +358,11 @@ user = <User: TestUser>, django_user_model = <class 'user.models.User'>
             f'{self.USERS_URL}{user.username}/', data=self.PATCH_DATA
         )
 >       assert response.status_code == HTTPStatus.FORBIDDEN, (
-            'Проверьте, что PATCH-запрос пользователя с ролью `user` к '
+            'пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ, пїЅпїЅпїЅ PATCH-пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅ `user` пїЅ '
             f'`{self.USERS_URL}'
-            '{username}/` возвращает ответ со статусом 403.'
+            '{username}/` пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ 403.'
         )
-E       AssertionError: Проверьте, что PATCH-запрос пользователя с ролью `user` к `/api/v1/users/{username}/` возвращает ответ со статусом 403.
+E       AssertionError: пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ, пїЅпїЅпїЅ PATCH-пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅ `user` пїЅ `/api/v1/users/{username}/` пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ 403.
 E       assert 404 == <HTTPStatus.FORBIDDEN: 403>
 E         +404
 E         -<HTTPStatus.FORBIDDEN: 403>
@@ -381,10 +381,10 @@ user = <User: TestUser>
             f'{self.USERS_URL}{user.username}/', data=self.PATCH_DATA
         )
 >       assert response.status_code == HTTPStatus.METHOD_NOT_ALLOWED, (
-            f'Проверьте, что PUT-запрос к `{self.USERS_URL}'
-            '{username}/` не предусмотрен и возвращает статус 405.'
+            f'пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ, пїЅпїЅпїЅ PUT-пїЅпїЅпїЅпїЅпїЅпїЅ пїЅ `{self.USERS_URL}'
+            '{username}/` пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ 405.'
         )
-E       AssertionError: Проверьте, что PUT-запрос к `/api/v1/users/{username}/` не предусмотрен и возвращает статус 405.
+E       AssertionError: пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ, пїЅпїЅпїЅ PUT-пїЅпїЅпїЅпїЅпїЅпїЅ пїЅ `/api/v1/users/{username}/` пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ 405.
 E       assert 404 == <HTTPStatus.METHOD_NOT_ALLOWED: 405>
 E         +404
 E         -<HTTPStatus.METHOD_NOT_ALLOWED: 405>
@@ -404,10 +404,10 @@ django_user_model = <class 'user.models.User'>
         users_cnt = django_user_model.objects.count()
         response = admin_client.delete(f'{self.USERS_URL}{user.username}/')
 >       assert response.status_code == HTTPStatus.NO_CONTENT, (
-            f'Проверьте, что DELETE-запрос администратора к `{self.USERS_URL}'
-            '{username}/` возвращает ответ со статусом 204.'
+            f'пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ, пїЅпїЅпїЅ DELETE-пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅ `{self.USERS_URL}'
+            '{username}/` пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ 204.'
         )
-E       AssertionError: Проверьте, что DELETE-запрос администратора к `/api/v1/users/{username}/` возвращает ответ со статусом 204.
+E       AssertionError: пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ, пїЅпїЅпїЅ DELETE-пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅ `/api/v1/users/{username}/` пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ 204.
 E       assert 404 == <HTTPStatus.NO_CONTENT: 204>
 E         +404
 E         -<HTTPStatus.NO_CONTENT: 204>
@@ -426,10 +426,10 @@ user = <User: TestUser>, django_user_model = <class 'user.models.User'>
         users_cnt = django_user_model.objects.count()
         response = moderator_client.delete(f'{self.USERS_URL}{user.username}/')
 >       assert response.status_code == HTTPStatus.FORBIDDEN, (
-            f'Проверьте, что DELETE-запрос модератора к `{self.USERS_URL}'
-            '{username}/` возвращает ответ со статусом 403.'
+            f'пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ, пїЅпїЅпїЅ DELETE-пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅ `{self.USERS_URL}'
+            '{username}/` пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ 403.'
         )
-E       AssertionError: Проверьте, что DELETE-запрос модератора к `/api/v1/users/{username}/` возвращает ответ со статусом 403.
+E       AssertionError: пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ, пїЅпїЅпїЅ DELETE-пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅ `/api/v1/users/{username}/` пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ 403.
 E       assert 404 == <HTTPStatus.FORBIDDEN: 403>
 E         +404
 E         -<HTTPStatus.FORBIDDEN: 403>
@@ -448,11 +448,11 @@ user = <User: TestUser>, django_user_model = <class 'user.models.User'>
         users_cnt = django_user_model.objects.count()
         response = user_client.delete(f'{self.USERS_URL}{user.username}/')
 >       assert response.status_code == HTTPStatus.FORBIDDEN, (
-            'Проверьте, что DELETE-запрос пользователя с ролью `user` к '
+            'пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ, пїЅпїЅпїЅ DELETE-пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅ `user` пїЅ '
             f'`{self.USERS_URL}'
-            '{username}/` возвращает ответ со статусом 403.'
+            '{username}/` пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ 403.'
         )
-E       AssertionError: Проверьте, что DELETE-запрос пользователя с ролью `user` к `/api/v1/users/{username}/` возвращает ответ со статусом 403.
+E       AssertionError: пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ, пїЅпїЅпїЅ DELETE-пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅ `user` пїЅ `/api/v1/users/{username}/` пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ 403.
 E       assert 404 == <HTTPStatus.FORBIDDEN: 403>
 E         +404
 E         -<HTTPStatus.FORBIDDEN: 403>
@@ -473,11 +473,11 @@ user = <User: TestUser>, django_user_model = <class 'user.models.User'>
             f'{self.USERS_URL}{user.username}/'
         )
 >       assert response.status_code == HTTPStatus.NO_CONTENT, (
-            'Проверьте, что DELETE-запрос суперпользователя к '
+            'пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ, пїЅпїЅпїЅ DELETE-пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅ '
             f'`{self.USERS_URL}'
-            '{username}/` возвращает ответ со статусом 204.'
+            '{username}/` пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ 204.'
         )
-E       AssertionError: Проверьте, что DELETE-запрос суперпользователя к `/api/v1/users/{username}/` возвращает ответ со статусом 204.
+E       AssertionError: пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ, пїЅпїЅпїЅ DELETE-пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅ `/api/v1/users/{username}/` пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ 204.
 E       assert 404 == <HTTPStatus.NO_CONTENT: 204>
 E         +404
 E         -<HTTPStatus.NO_CONTENT: 204>
@@ -494,10 +494,10 @@ user = <User: TestUser>
     def test_09_users_me_get(self, user_client, user):
         response = user_client.get(f'{self.USERS_ME_URL}')
 >       assert response.status_code == HTTPStatus.OK, (
-            'Проверьте, что GET-запрос обычного пользователя к '
-            f'`{self.USERS_ME_URL}` возвращает ответ со статусом 200.'
+            'пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ, пїЅпїЅпїЅ GET-пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅ '
+            f'`{self.USERS_ME_URL}` пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ 200.'
         )
-E       AssertionError: Проверьте, что GET-запрос обычного пользователя к `/api/v1/users/me/` возвращает ответ со статусом 200.
+E       AssertionError: пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ, пїЅпїЅпїЅ GET-пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅ `/api/v1/users/me/` пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ 200.
 E       assert 404 == <HTTPStatus.OK: 200>
 E         +404
 E         -<HTTPStatus.OK: 200>
@@ -515,10 +515,10 @@ user = <User: TestUser>, django_user_model = <class 'user.models.User'>
                                                django_user_model):
         response = user_client.delete(f'{self.USERS_ME_URL}')
 >       assert response.status_code == HTTPStatus.METHOD_NOT_ALLOWED, (
-            f'Проверьте, что DELETE-запрос к `{self.USERS_ME_URL}` возвращает '
-            'ответ со статусом 405.'
+            f'пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ, пїЅпїЅпїЅ DELETE-пїЅпїЅпїЅпїЅпїЅпїЅ пїЅ `{self.USERS_ME_URL}` пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ '
+            'пїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ 405.'
         )
-E       AssertionError: Проверьте, что DELETE-запрос к `/api/v1/users/me/` возвращает ответ со статусом 405.
+E       AssertionError: пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ, пїЅпїЅпїЅ DELETE-пїЅпїЅпїЅпїЅпїЅпїЅ пїЅ `/api/v1/users/me/` пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ 405.
 E       assert 404 == <HTTPStatus.METHOD_NOT_ALLOWED: 405>
 E         +404
 E         -<HTTPStatus.METHOD_NOT_ALLOWED: 405>
@@ -549,9 +549,9 @@ user = <User: TestAdmin>
         ):
             response = client.patch(f'{self.USERS_ME_URL}', data=data)
 >           assert response.status_code == HTTPStatus.OK, (
-                'Проверьте, что PATCH-запрос к '
-                f'`{self.USERUSERS_ME_URLS_URL}` доступен пользователям всех '
-                'ролей и возвращает ответ со статусом 200.'
+                'пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ, пїЅпїЅпїЅ PATCH-пїЅпїЅпїЅпїЅпїЅпїЅ пїЅ '
+                f'`{self.USERUSERS_ME_URLS_URL}` пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ '
+                'пїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ 200.'
             )
 E           AttributeError: 'Test01UserAPI' object has no attribute 'USERUSERS_ME_URLS_URL'
 
@@ -563,7 +563,7 @@ ___ Test01UserAPI.test_10_02_users_me_has_field_validation[data0-messege0] ____
 self = <tests.test_01_users.Test01UserAPI object at 0x00000250777A7F40>
 user_client = <rest_framework.test.APIClient object at 0x000002507789B4C0>
 data = {'email': 'aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa...aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa@yamdb.fake', 'username': 'valid-username'}
-messege = ('Проверьте, что при обработке {request_method}-запроса к `{url}` проверяется длина поля `email`: его содержимое не должно быть длиннее 254 символа.',)
+messege = ('пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ, пїЅпїЅпїЅ пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ {request_method}-пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅ `{url}` пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ `email`: пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ 254 пїЅпїЅпїЅпїЅпїЅпїЅпїЅ.',)
 
     @pytest.mark.parametrize(
         'data,messege', invalid_data_for_user_patch_and_creation
@@ -578,7 +578,7 @@ messege = ('Проверьте, что при обработке {request_method}-запроса к `{url}` пров
                 request_method=request_method
             )
         )
-E       AssertionError: Проверьте, что при обработке PATCH-запроса к `/api/v1/users/me/` проверяется длина поля `email`: его содержимое не должно быть длиннее 254 символа.
+E       AssertionError: пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ, пїЅпїЅпїЅ пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ PATCH-пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅ `/api/v1/users/me/` пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ `email`: пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ 254 пїЅпїЅпїЅпїЅпїЅпїЅпїЅ.
 E       assert 404 == <HTTPStatus.BAD_REQUEST: 400>
 E         +404
 E         -<HTTPStatus.BAD_REQUEST: 400>
@@ -591,7 +591,7 @@ ___ Test01UserAPI.test_10_02_users_me_has_field_validation[data1-messege1] ____
 self = <tests.test_01_users.Test01UserAPI object at 0x000002507789B520>
 user_client = <rest_framework.test.APIClient object at 0x0000025078D0DC40>
 data = {'email': 'valid-email@yamdb.fake', 'username': 'aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa'}
-messege = ('Проверьте, что при обработке {request_method}-запроса к `{url}` проверяется длина поля `username`: его содержимое не должно быть длиннее 150 символов.',)
+messege = ('пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ, пїЅпїЅпїЅ пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ {request_method}-пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅ `{url}` пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ `username`: пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ 150 пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ.',)
 
     @pytest.mark.parametrize(
         'data,messege', invalid_data_for_user_patch_and_creation
@@ -606,7 +606,7 @@ messege = ('Проверьте, что при обработке {request_method}-запроса к `{url}` пров
                 request_method=request_method
             )
         )
-E       AssertionError: Проверьте, что при обработке PATCH-запроса к `/api/v1/users/me/` проверяется длина поля `username`: его содержимое не должно быть длиннее 150 символов.
+E       AssertionError: пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ, пїЅпїЅпїЅ пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ PATCH-пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅ `/api/v1/users/me/` пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ `username`: пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ 150 пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ.
 E       assert 404 == <HTTPStatus.BAD_REQUEST: 400>
 E         +404
 E         -<HTTPStatus.BAD_REQUEST: 400>
@@ -619,7 +619,7 @@ ___ Test01UserAPI.test_10_02_users_me_has_field_validation[data2-messege2] ____
 self = <tests.test_01_users.Test01UserAPI object at 0x000002507788D1F0>
 user_client = <rest_framework.test.APIClient object at 0x0000025078C4E280>
 data = {'email': 'valid-email@yamdb.fake', 'username': '|-|aTa|_|_|a'}
-messege = ('Проверьте, что при обработке {request_method}-запроса к `{url}` содержание поля `username` проверяется на соответствие паттерну, указанному в спецификации: ^[\\w.@+-]+\\Z',)
+messege = ('пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ, пїЅпїЅпїЅ пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ {request_method}-пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅ `{url}` пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ `username` пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ, пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ: ^[\\w.@+-]+\\Z',)
 
     @pytest.mark.parametrize(
         'data,messege', invalid_data_for_user_patch_and_creation
@@ -634,7 +634,7 @@ messege = ('Проверьте, что при обработке {request_method}-запроса к `{url}` соде
                 request_method=request_method
             )
         )
-E       AssertionError: Проверьте, что при обработке PATCH-запроса к `/api/v1/users/me/` содержание поля `username` проверяется на соответствие паттерну, указанному в спецификации: ^[\w.@+-]+\Z
+E       AssertionError: пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ, пїЅпїЅпїЅ пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ PATCH-пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅ `/api/v1/users/me/` пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ `username` пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ, пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ: ^[\w.@+-]+\Z
 E       assert 404 == <HTTPStatus.BAD_REQUEST: 400>
 E         +404
 E         -<HTTPStatus.BAD_REQUEST: 400>
@@ -647,7 +647,7 @@ ___ Test01UserAPI.test_10_02_users_me_has_field_validation[data3-messege3] ____
 self = <tests.test_01_users.Test01UserAPI object at 0x0000025078C60400>
 user_client = <rest_framework.test.APIClient object at 0x0000025078D557F0>
 data = {'email': 'valid-email@yamdb.fake', 'first_name': 'toolonggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggg', 'username': 'validname'}
-messege = ('Проверьте, что при обработке POST-запроса к `{url}` проверяется длина поля `first_name`: его содержимое не должно быть длиннее 150 символов.',)
+messege = ('пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ, пїЅпїЅпїЅ пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ POST-пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅ `{url}` пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ `first_name`: пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ 150 пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ.',)
 
     @pytest.mark.parametrize(
         'data,messege', invalid_data_for_user_patch_and_creation
@@ -662,7 +662,7 @@ messege = ('Проверьте, что при обработке POST-запроса к `{url}` проверяется длин
                 request_method=request_method
             )
         )
-E       AssertionError: Проверьте, что при обработке POST-запроса к `/api/v1/users/me/` проверяется длина поля `first_name`: его содержимое не должно быть длиннее 150 символов.
+E       AssertionError: пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ, пїЅпїЅпїЅ пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ POST-пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅ `/api/v1/users/me/` пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ `first_name`: пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ 150 пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ.
 E       assert 404 == <HTTPStatus.BAD_REQUEST: 400>
 E         +404
 E         -<HTTPStatus.BAD_REQUEST: 400>
@@ -675,7 +675,7 @@ ___ Test01UserAPI.test_10_02_users_me_has_field_validation[data4-messege4] ____
 self = <tests.test_01_users.Test01UserAPI object at 0x00000250779C7370>
 user_client = <rest_framework.test.APIClient object at 0x000002507792B4C0>
 data = {'email': 'valid-email@yamdb.fake', 'last_name': 'toolonggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggg', 'username': 'validname'}
-messege = ('Проверьте, что при обработке POST-запроса к `{url}` проверяется длина поля `last_name`: его содержимое не должно быть длиннее 150 символов.',)
+messege = ('пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ, пїЅпїЅпїЅ пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ POST-пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅ `{url}` пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ `last_name`: пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ 150 пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ.',)
 
     @pytest.mark.parametrize(
         'data,messege', invalid_data_for_user_patch_and_creation
@@ -690,7 +690,7 @@ messege = ('Проверьте, что при обработке POST-запроса к `{url}` проверяется длин
                 request_method=request_method
             )
         )
-E       AssertionError: Проверьте, что при обработке POST-запроса к `/api/v1/users/me/` проверяется длина поля `last_name`: его содержимое не должно быть длиннее 150 символов.
+E       AssertionError: пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ, пїЅпїЅпїЅ пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ POST-пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅ `/api/v1/users/me/` пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ `last_name`: пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ 150 пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ.
 E       assert 404 == <HTTPStatus.BAD_REQUEST: 400>
 E         +404
 E         -<HTTPStatus.BAD_REQUEST: 400>
@@ -712,10 +712,10 @@ user = <User: TestUser>, django_user_model = <class 'user.models.User'>
             f'{self.USERS_ME_URL}', data=self.PATCH_DATA
         )
 >       assert response.status_code == HTTPStatus.OK, (
-            'Проверьте, что PATCH-запрос пользователя с ролью `user` к '
-            f'`{self.USERS_ME_URL}` возвращает ответ со статусом 200.'
+            'пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ, пїЅпїЅпїЅ PATCH-пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅ `user` пїЅ '
+            f'`{self.USERS_ME_URL}` пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ 200.'
         )
-E       AssertionError: Проверьте, что PATCH-запрос пользователя с ролью `user` к `/api/v1/users/me/` возвращает ответ со статусом 200.
+E       AssertionError: пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ, пїЅпїЅпїЅ PATCH-пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅ `user` пїЅ `/api/v1/users/me/` пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ 200.
 E       assert 404 == <HTTPStatus.OK: 200>
 E         +404
 E         -<HTTPStatus.OK: 200>
@@ -737,23 +737,23 @@ admin_client = <rest_framework.test.APIClient object at 0x00000250778A78B0>
                                                 admin_client):
         categories = create_categories(admin_client)
         data = {
-            'name': 'Музыка',
+            'name': 'пїЅпїЅпїЅпїЅпїЅпїЅ',
             'slug': 'music'
         }
         check_permissions(client, self.CATEGORY_URL, data,
-                          'неавторизованного пользователя',
+                          'пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ',
                           categories, HTTPStatus.UNAUTHORIZED)
 >       check_permissions(user_client, self.CATEGORY_URL, data,
-                          'пользователя с ролью `user`', categories,
+                          'пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅ `user`', categories,
                           HTTPStatus.FORBIDDEN)
 
 tests\test_02_category.py:151: 
 _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
 
 client = <rest_framework.test.APIClient object at 0x00000250778A7FD0>
-url = '/api/v1/categories/', data = {'name': 'Музыка', 'slug': 'music'}
-user_role = 'пользователя с ролью `user`'
-objects = [{'name': 'Фильм', 'slug': 'films'}, {'name': 'Книги', 'slug': 'books'}]
+url = '/api/v1/categories/', data = {'name': 'пїЅпїЅпїЅпїЅпїЅпїЅ', 'slug': 'music'}
+user_role = 'пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅ `user`'
+objects = [{'name': 'пїЅпїЅпїЅпїЅпїЅ', 'slug': 'films'}, {'name': 'пїЅпїЅпїЅпїЅпїЅ', 'slug': 'books'}]
 expected_status = <HTTPStatus.FORBIDDEN: 403>
 
     def check_permissions(client, url, data, user_role, objects,
@@ -762,10 +762,10 @@ expected_status = <HTTPStatus.FORBIDDEN: 403>
     
         response = client.post(url, data=data)
 >       assert response.status_code == expected_status, (
-            f'Проверьте, что POST-запрос {user_role} к `{url}` возвращает ответ '
-            f'со статусом {expected_status}.'
+            f'пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ, пїЅпїЅпїЅ POST-пїЅпїЅпїЅпїЅпїЅпїЅ {user_role} пїЅ `{url}` пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ '
+            f'пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ {expected_status}.'
         )
-E       AssertionError: Проверьте, что POST-запрос пользователя с ролью `user` к `/api/v1/categories/` возвращает ответ со статусом 403.
+E       AssertionError: пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ, пїЅпїЅпїЅ POST-пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅ `user` пїЅ `/api/v1/categories/` пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ 403.
 
 tests\utils.py:137: AssertionError
 ------------------------------ Captured log call ------------------------------
@@ -786,23 +786,23 @@ admin_client = <rest_framework.test.APIClient object at 0x0000025077703C10>
                                         admin_client):
         genres = create_genre(admin_client)
         data = {
-            'name': 'Боевик',
+            'name': 'пїЅпїЅпїЅпїЅпїЅпїЅ',
             'slug': 'action'
         }
         check_permissions(client, self.GENRES_URL, data,
-                          'неавторизованного пользователя',
+                          'пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ',
                           genres, HTTPStatus.UNAUTHORIZED)
 >       check_permissions(user_client, self.GENRES_URL, data,
-                          'пользователя с ролью `user`', genres,
+                          'пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅ `user`', genres,
                           HTTPStatus.FORBIDDEN)
 
 tests\test_03_genre.py:134: 
 _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
 
 client = <rest_framework.test.APIClient object at 0x0000025077717C40>
-url = '/api/v1/genres/', data = {'name': 'Боевик', 'slug': 'action'}
-user_role = 'пользователя с ролью `user`'
-objects = [{'name': 'Ужасы', 'slug': 'horror'}, {'name': 'Комедия', 'slug': 'comedy'}, {'name': 'Драма', 'slug': 'drama'}]
+url = '/api/v1/genres/', data = {'name': 'пїЅпїЅпїЅпїЅпїЅпїЅ', 'slug': 'action'}
+user_role = 'пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅ `user`'
+objects = [{'name': 'пїЅпїЅпїЅпїЅпїЅ', 'slug': 'horror'}, {'name': 'пїЅпїЅпїЅпїЅпїЅпїЅпїЅ', 'slug': 'comedy'}, {'name': 'пїЅпїЅпїЅпїЅпїЅ', 'slug': 'drama'}]
 expected_status = <HTTPStatus.FORBIDDEN: 403>
 
     def check_permissions(client, url, data, user_role, objects,
@@ -811,10 +811,10 @@ expected_status = <HTTPStatus.FORBIDDEN: 403>
     
         response = client.post(url, data=data)
 >       assert response.status_code == expected_status, (
-            f'Проверьте, что POST-запрос {user_role} к `{url}` возвращает ответ '
-            f'со статусом {expected_status}.'
+            f'пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ, пїЅпїЅпїЅ POST-пїЅпїЅпїЅпїЅпїЅпїЅ {user_role} пїЅ `{url}` пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ '
+            f'пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ {expected_status}.'
         )
-E       AssertionError: Проверьте, что POST-запрос пользователя с ролью `user` к `/api/v1/genres/` возвращает ответ со статусом 403.
+E       AssertionError: пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ, пїЅпїЅпїЅ POST-пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅ `user` пїЅ `/api/v1/genres/` пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ 403.
 
 tests\utils.py:137: AssertionError
 ------------------------------ Captured log call ------------------------------
@@ -833,17 +833,17 @@ admin_client = <rest_framework.test.APIClient object at 0x0000025077691BB0>
                                         moderator_client, admin_client):
         titles, categories, genres = create_titles(admin_client)
         data = {
-            'name': 'Зловещие мертвецы',
+            'name': 'пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ',
             'year': 1981,
             'genre': [genres[2]['slug'], genres[1]['slug']],
             'category': categories[0]['slug'],
             'description': 'This Is My Boomstick! - Ash'
         }
         check_permissions(client, self.TITLES_URL, data,
-                          'неавторизованного пользователя', titles,
+                          'пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ', titles,
                           HTTPStatus.UNAUTHORIZED)
 >       check_permissions(user_client, self.TITLES_URL, data,
-                          'пользователя с ролью `user`', titles,
+                          'пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅ `user`', titles,
                           HTTPStatus.FORBIDDEN)
 
 tests\test_04_title.py:338: 
@@ -851,8 +851,8 @@ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
 
 client = <rest_framework.test.APIClient object at 0x0000025077691310>
 url = '/api/v1/titles/'
-data = {'category': 'films', 'description': 'This Is My Boomstick! - Ash', 'genre': ['drama', 'comedy'], 'name': 'Зловещие мертвецы', ...}
-user_role = 'пользователя с ролью `user`'
+data = {'category': 'films', 'description': 'This Is My Boomstick! - Ash', 'genre': ['drama', 'comedy'], 'name': 'пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ', ...}
+user_role = 'пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅ `user`'
 objects = [{'category': 'films', 'description': 'I`ll be back', 'genre': ['horror', 'comedy'], 'id': 7, ...}, {'category': 'books', 'description': 'Yippie ki yay...', 'genre': ['drama'], 'id': 8, ...}]
 expected_status = <HTTPStatus.FORBIDDEN: 403>
 
@@ -862,10 +862,10 @@ expected_status = <HTTPStatus.FORBIDDEN: 403>
     
         response = client.post(url, data=data)
 >       assert response.status_code == expected_status, (
-            f'Проверьте, что POST-запрос {user_role} к `{url}` возвращает ответ '
-            f'со статусом {expected_status}.'
+            f'пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ, пїЅпїЅпїЅ POST-пїЅпїЅпїЅпїЅпїЅпїЅ {user_role} пїЅ `{url}` пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ '
+            f'пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ {expected_status}.'
         )
-E       AssertionError: Проверьте, что POST-запрос пользователя с ролью `user` к `/api/v1/titles/` возвращает ответ со статусом 403.
+E       AssertionError: пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ, пїЅпїЅпїЅ POST-пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅ `user` пїЅ `/api/v1/titles/` пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ 403.
 
 tests\utils.py:137: AssertionError
 ------------------------------ Captured log call ------------------------------
@@ -899,29 +899,29 @@ moderator_client = <rest_framework.test.APIClient object at 0x0000025077C09D90>
     
         response = user_client.patch(user_review_url, data=new_data)
         assert response.status_code == HTTPStatus.OK, (
-            'Проверьте, что PATCH-запрос пользователя с ролью `user` к его '
-            f'собственному отзыву через `{self.REVIEW_DETAIL_URL_TEMPLATE}` '
-            'возвращает ответ со статусом 200.'
+            'пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ, пїЅпїЅпїЅ PATCH-пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅ `user` пїЅ пїЅпїЅпїЅ '
+            f'пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ `{self.REVIEW_DETAIL_URL_TEMPLATE}` '
+            'пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ 200.'
         )
         data = response.json()
         assert data.get('text') == new_data['text'], (
-            'Проверьте, что ответ на успешный PATCH-запрос к '
-            f'`{self.REVIEW_DETAIL_URL_TEMPLATE}` содержит обновлённые данные '
-            'отзыва. Сейчас поле `text` не найдено или содержит некорректные '
-            'данные.'
+            'пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ, пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ PATCH-пїЅпїЅпїЅпїЅпїЅпїЅ пїЅ '
+            f'`{self.REVIEW_DETAIL_URL_TEMPLATE}` пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ '
+            'пїЅпїЅпїЅпїЅпїЅпїЅ. пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ `text` пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ '
+            'пїЅпїЅпїЅпїЅпїЅпїЅ.'
         )
     
         response = user_client.get(user_review_url)
         assert response.status_code == HTTPStatus.OK, (
-            'Проверьте, что GET-запрос авторизованного пользователя к '
-            f'{self.REVIEW_DETAIL_URL_TEMPLATE} возвращает ответ со статусом '
+            'пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ, пїЅпїЅпїЅ GET-пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅ '
+            f'{self.REVIEW_DETAIL_URL_TEMPLATE} пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ '
             '200.'
         )
         data = response.json()
         assert_msg_template = (
-            'Проверьте, что если в PATCH-запросе авторизованного пользователя '
-            'к его собственному отзыву через `{url_template}` содержится поле '
-            '`{field}` - то это поле отзыва будет изменено.'
+            'пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ, пїЅпїЅпїЅ пїЅпїЅпїЅпїЅ пїЅ PATCH-пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ '
+            'пїЅ пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ `{url_template}` пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ '
+            '`{field}` - пїЅпїЅ пїЅпїЅпїЅ пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ.'
         )
         assert data.get('text') == new_data['text'], (
             assert_msg_template.format(
@@ -999,31 +999,31 @@ api_yamdb\api\permissions.py:23: AttributeError
 ------------------------------ Captured log call ------------------------------
 ERROR    django.request:log.py:224 Internal Server Error: /api/v1/titles/18/reviews/12/
 Traceback (most recent call last):
-  File "D:\Dev\api_yamdb\venv\lib\site-packages\django\core\handlers\exception.py", line 47, in inner
+  File 'D:\Dev\api_yamdb\venv\lib\site-packages\django\core\handlers\exception.py', line 47, in inner
     response = get_response(request)
-  File "D:\Dev\api_yamdb\venv\lib\site-packages\django\core\handlers\base.py", line 181, in _get_response
+  File 'D:\Dev\api_yamdb\venv\lib\site-packages\django\core\handlers\base.py', line 181, in _get_response
     response = wrapped_callback(request, *callback_args, **callback_kwargs)
-  File "D:\Dev\api_yamdb\venv\lib\site-packages\django\views\decorators\csrf.py", line 54, in wrapped_view
+  File 'D:\Dev\api_yamdb\venv\lib\site-packages\django\views\decorators\csrf.py', line 54, in wrapped_view
     return view_func(*args, **kwargs)
-  File "D:\Dev\api_yamdb\venv\lib\site-packages\rest_framework\viewsets.py", line 125, in view
+  File 'D:\Dev\api_yamdb\venv\lib\site-packages\rest_framework\viewsets.py', line 125, in view
     return self.dispatch(request, *args, **kwargs)
-  File "D:\Dev\api_yamdb\venv\lib\site-packages\rest_framework\views.py", line 509, in dispatch
+  File 'D:\Dev\api_yamdb\venv\lib\site-packages\rest_framework\views.py', line 509, in dispatch
     response = self.handle_exception(exc)
-  File "D:\Dev\api_yamdb\venv\lib\site-packages\rest_framework\views.py", line 469, in handle_exception
+  File 'D:\Dev\api_yamdb\venv\lib\site-packages\rest_framework\views.py', line 469, in handle_exception
     self.raise_uncaught_exception(exc)
-  File "D:\Dev\api_yamdb\venv\lib\site-packages\rest_framework\views.py", line 480, in raise_uncaught_exception
+  File 'D:\Dev\api_yamdb\venv\lib\site-packages\rest_framework\views.py', line 480, in raise_uncaught_exception
     raise exc
-  File "D:\Dev\api_yamdb\venv\lib\site-packages\rest_framework\views.py", line 506, in dispatch
+  File 'D:\Dev\api_yamdb\venv\lib\site-packages\rest_framework\views.py', line 506, in dispatch
     response = handler(request, *args, **kwargs)
-  File "D:\Dev\api_yamdb\venv\lib\site-packages\rest_framework\mixins.py", line 82, in partial_update
+  File 'D:\Dev\api_yamdb\venv\lib\site-packages\rest_framework\mixins.py', line 82, in partial_update
     return self.update(request, *args, **kwargs)
-  File "D:\Dev\api_yamdb\venv\lib\site-packages\rest_framework\mixins.py", line 65, in update
+  File 'D:\Dev\api_yamdb\venv\lib\site-packages\rest_framework\mixins.py', line 65, in update
     instance = self.get_object()
-  File "D:\Dev\api_yamdb\venv\lib\site-packages\rest_framework\generics.py", line 99, in get_object
+  File 'D:\Dev\api_yamdb\venv\lib\site-packages\rest_framework\generics.py', line 99, in get_object
     self.check_object_permissions(self.request, obj)
-  File "D:\Dev\api_yamdb\venv\lib\site-packages\rest_framework\views.py", line 345, in check_object_permissions
+  File 'D:\Dev\api_yamdb\venv\lib\site-packages\rest_framework\views.py', line 345, in check_object_permissions
     if not permission.has_object_permission(request, self, obj):
-  File "D:\Dev\api_yamdb\api_yamdb\api\permissions.py", line 23, in has_object_permission
+  File 'D:\Dev\api_yamdb\api_yamdb\api\permissions.py', line 23, in has_object_permission
     or request.user.is_moderator
 AttributeError: 'User' object has no attribute 'is_moderator'
 _________ Test05ReviewAPI.test_05_reviews_detail_moderator_and_admin __________
@@ -1052,8 +1052,8 @@ moderator = <User: TestModerator>
         }
     
         for idx, (client, role) in enumerate((
-                (moderator_client, 'модератора'),
-                (admin_client, 'администратора')
+                (moderator_client, 'пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ'),
+                (admin_client, 'пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ')
         ), 1):
 >           response = client.patch(
                 self.REVIEW_DETAIL_URL_TEMPLATE.format(
@@ -1122,31 +1122,31 @@ api_yamdb\api\permissions.py:23: AttributeError
 ------------------------------ Captured log call ------------------------------
 ERROR    django.request:log.py:224 Internal Server Error: /api/v1/titles/20/reviews/14/
 Traceback (most recent call last):
-  File "D:\Dev\api_yamdb\venv\lib\site-packages\django\core\handlers\exception.py", line 47, in inner
+  File 'D:\Dev\api_yamdb\venv\lib\site-packages\django\core\handlers\exception.py', line 47, in inner
     response = get_response(request)
-  File "D:\Dev\api_yamdb\venv\lib\site-packages\django\core\handlers\base.py", line 181, in _get_response
+  File 'D:\Dev\api_yamdb\venv\lib\site-packages\django\core\handlers\base.py', line 181, in _get_response
     response = wrapped_callback(request, *callback_args, **callback_kwargs)
-  File "D:\Dev\api_yamdb\venv\lib\site-packages\django\views\decorators\csrf.py", line 54, in wrapped_view
+  File 'D:\Dev\api_yamdb\venv\lib\site-packages\django\views\decorators\csrf.py', line 54, in wrapped_view
     return view_func(*args, **kwargs)
-  File "D:\Dev\api_yamdb\venv\lib\site-packages\rest_framework\viewsets.py", line 125, in view
+  File 'D:\Dev\api_yamdb\venv\lib\site-packages\rest_framework\viewsets.py', line 125, in view
     return self.dispatch(request, *args, **kwargs)
-  File "D:\Dev\api_yamdb\venv\lib\site-packages\rest_framework\views.py", line 509, in dispatch
+  File 'D:\Dev\api_yamdb\venv\lib\site-packages\rest_framework\views.py', line 509, in dispatch
     response = self.handle_exception(exc)
-  File "D:\Dev\api_yamdb\venv\lib\site-packages\rest_framework\views.py", line 469, in handle_exception
+  File 'D:\Dev\api_yamdb\venv\lib\site-packages\rest_framework\views.py', line 469, in handle_exception
     self.raise_uncaught_exception(exc)
-  File "D:\Dev\api_yamdb\venv\lib\site-packages\rest_framework\views.py", line 480, in raise_uncaught_exception
+  File 'D:\Dev\api_yamdb\venv\lib\site-packages\rest_framework\views.py', line 480, in raise_uncaught_exception
     raise exc
-  File "D:\Dev\api_yamdb\venv\lib\site-packages\rest_framework\views.py", line 506, in dispatch
+  File 'D:\Dev\api_yamdb\venv\lib\site-packages\rest_framework\views.py', line 506, in dispatch
     response = handler(request, *args, **kwargs)
-  File "D:\Dev\api_yamdb\venv\lib\site-packages\rest_framework\mixins.py", line 82, in partial_update
+  File 'D:\Dev\api_yamdb\venv\lib\site-packages\rest_framework\mixins.py', line 82, in partial_update
     return self.update(request, *args, **kwargs)
-  File "D:\Dev\api_yamdb\venv\lib\site-packages\rest_framework\mixins.py", line 65, in update
+  File 'D:\Dev\api_yamdb\venv\lib\site-packages\rest_framework\mixins.py', line 65, in update
     instance = self.get_object()
-  File "D:\Dev\api_yamdb\venv\lib\site-packages\rest_framework\generics.py", line 99, in get_object
+  File 'D:\Dev\api_yamdb\venv\lib\site-packages\rest_framework\generics.py', line 99, in get_object
     self.check_object_permissions(self.request, obj)
-  File "D:\Dev\api_yamdb\venv\lib\site-packages\rest_framework\views.py", line 345, in check_object_permissions
+  File 'D:\Dev\api_yamdb\venv\lib\site-packages\rest_framework\views.py', line 345, in check_object_permissions
     if not permission.has_object_permission(request, self, obj):
-  File "D:\Dev\api_yamdb\api_yamdb\api\permissions.py", line 23, in has_object_permission
+  File 'D:\Dev\api_yamdb\api_yamdb\api\permissions.py', line 23, in has_object_permission
     or request.user.is_moderator
 AttributeError: 'User' object has no attribute 'is_moderator'
 ___________ Test05ReviewAPI.test_06_reviews_detail_put_not_allowed ____________
@@ -1169,7 +1169,7 @@ moderator = <User: TestModerator>
         }
         reviews, titles = create_reviews(admin_client, author_map)
         review = reviews[0]
-        review['text'] = 'Новвый текст отзыва.'
+        review['text'] = 'пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ.'
         response = admin_client.put(
             self.REVIEW_DETAIL_URL_TEMPLATE.format(
                 title_id=titles[0]['id'], review_id=reviews[0]['id']
@@ -1177,10 +1177,10 @@ moderator = <User: TestModerator>
             data=review
         )
 >       assert response.status_code == HTTPStatus.METHOD_NOT_ALLOWED, (
-            f'Проверьте, что PUT-запрос к `{self.REVIEW_DETAIL_URL_TEMPLATE} '
-            'не предусмотрен и возвращает статус 405.'
+            f'пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ, пїЅпїЅпїЅ PUT-пїЅпїЅпїЅпїЅпїЅпїЅ пїЅ `{self.REVIEW_DETAIL_URL_TEMPLATE} '
+            'пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ 405.'
         )
-E       AssertionError: Проверьте, что PUT-запрос к `/api/v1/titles/{title_id}/reviews/{review_id}/ не предусмотрен и возвращает статус 405.
+E       AssertionError: пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ, пїЅпїЅпїЅ PUT-пїЅпїЅпїЅпїЅпїЅпїЅ пїЅ `/api/v1/titles/{title_id}/reviews/{review_id}/ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ 405.
 E       assert 200 == <HTTPStatus.METHOD_NOT_ALLOWED: 405>
 E         +200
 E         -<HTTPStatus.METHOD_NOT_ALLOWED: 405>
@@ -1189,8 +1189,8 @@ tests\test_05_review.py:412: AssertionError
 ______________________ Test06CommentAPI.test_02_comment _______________________
 
 self = CommentSerializer(context={'request': <rest_framework.request.Request: POST '/api/v1/titles/26/reviews/22/comments/'>,...or = SlugRelatedField(read_only=True, slug_field='username')
-    pub_date = DateTimeField(label='Дата', read_only=True)
-validated_data = {'author': <User: TestAdmin>, 'review': <Review: review number 1>, 'text': 'test comment', 'title': <Title: Терминатор>}
+    pub_date = DateTimeField(label='пїЅпїЅпїЅпїЅ', read_only=True)
+validated_data = {'author': <User: TestAdmin>, 'review': <Review: review number 1>, 'text': 'test comment', 'title': <Title: пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ>}
 
     def create(self, validated_data):
         """
@@ -1234,7 +1234,7 @@ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
 
 self = <django.db.models.manager.Manager object at 0x000002507778A970>
 args = ()
-kwargs = {'author': <User: TestAdmin>, 'review': <Review: review number 1>, 'text': 'test comment', 'title': <Title: Терминатор>}
+kwargs = {'author': <User: TestAdmin>, 'review': <Review: review number 1>, 'text': 'test comment', 'title': <Title: пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ>}
 
     def manager_method(self, *args, **kwargs):
 >       return getattr(self.get_queryset(), name)(*args, **kwargs)
@@ -1243,7 +1243,7 @@ venv\lib\site-packages\django\db\models\manager.py:85:
 _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
 
 self = <QuerySet []>
-kwargs = {'author': <User: TestAdmin>, 'review': <Review: review number 1>, 'text': 'test comment', 'title': <Title: Терминатор>}
+kwargs = {'author': <User: TestAdmin>, 'review': <Review: review number 1>, 'text': 'test comment', 'title': <Title: пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ>}
 
     def create(self, **kwargs):
         """
@@ -1256,7 +1256,7 @@ venv\lib\site-packages\django\db\models\query.py:451:
 _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
 
 self = <Comment: test comment>, args = ()
-kwargs = {'title': <Title: Терминатор>}, cls = <class 'reviews.models.Comment'>
+kwargs = {'title': <Title: пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ>}, cls = <class 'reviews.models.Comment'>
 opts = <Options for Comment>, _setattr = <built-in function setattr>
 _DEFERRED = <Deferred field>
 fields_iter = <tuple_iterator object at 0x0000025077ADBDC0>, val = None
@@ -1284,7 +1284,7 @@ property_names = frozenset({'pk'})
         # args, and instantiation for iteration is 33% faster.
         if len(args) > len(opts.concrete_fields):
             # Daft, but matches old exception sans the err msg.
-            raise IndexError("Number of args exceeds number of fields")
+            raise IndexError('Number of args exceeds number of fields')
     
         if not kwargs:
             fields_iter = iter(opts.concrete_fields)
@@ -1339,8 +1339,8 @@ property_names = frozenset({'pk'})
     
             if is_related_object:
                 # If we are passed a related instance, set it using the
-                # field.name instead of field.attname (e.g. "user" instead of
-                # "user_id") so that the object gets properly cached (and type
+                # field.name instead of field.attname (e.g. 'user' instead of
+                # 'user_id') so that the object gets properly cached (and type
                 # checked) by the RelatedObjectDescriptor.
                 if rel_obj is not _DEFERRED:
                     _setattr(self, field.name, rel_obj)
@@ -1361,7 +1361,7 @@ property_names = frozenset({'pk'})
                 except (AttributeError, FieldDoesNotExist):
                     pass
             for kwarg in kwargs:
->               raise TypeError("%s() got an unexpected keyword argument '%s'" % (cls.__name__, kwarg))
+>               raise TypeError('%s() got an unexpected keyword argument '%s'' % (cls.__name__, kwarg))
 E               TypeError: Comment() got an unexpected keyword argument 'title'
 
 venv\lib\site-packages\django\db\models\base.py:503: TypeError
@@ -1395,9 +1395,9 @@ moderator = <User: TestModerator>
             data=data
         )
         assert response.status_code == HTTPStatus.BAD_REQUEST, (
-            'Если POST-запрос пользователя с ролью `user` к '
-            f'`{self.COMMENTS_URL_TEMPLATE}` содержит некорректные данные - '
-            'должен вернуться ответ со статусом 400.'
+            'пїЅпїЅпїЅпїЅ POST-пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅ `user` пїЅ '
+            f'`{self.COMMENTS_URL_TEMPLATE}` пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ - '
+            'пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ 400.'
         )
     
         post_data = {'text': 'test comment'}
@@ -1452,8 +1452,8 @@ api_yamdb\api\serializers.py:116: in create
 _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
 
 self = CommentSerializer(context={'request': <rest_framework.request.Request: POST '/api/v1/titles/26/reviews/22/comments/'>,...or = SlugRelatedField(read_only=True, slug_field='username')
-    pub_date = DateTimeField(label='Дата', read_only=True)
-validated_data = {'author': <User: TestAdmin>, 'review': <Review: review number 1>, 'text': 'test comment', 'title': <Title: Терминатор>}
+    pub_date = DateTimeField(label='пїЅпїЅпїЅпїЅ', read_only=True)
+validated_data = {'author': <User: TestAdmin>, 'review': <Review: review number 1>, 'text': 'test comment', 'title': <Title: пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ>}
 
     def create(self, validated_data):
         """
@@ -1513,14 +1513,14 @@ validated_data = {'author': <User: TestAdmin>, 'review': <Review: review number 
 E           TypeError: Got a `TypeError` when calling `Comment.objects.create()`. This may be because you have a writable field on the serializer class that is not a valid argument to `Comment.objects.create()`. You may need to make the field read-only, or override the CommentSerializer.create() method to handle this correctly.
 E           Original exception was:
 E            Traceback (most recent call last):
-E             File "D:\Dev\api_yamdb\venv\lib\site-packages\rest_framework\serializers.py", line 962, in create
+E             File 'D:\Dev\api_yamdb\venv\lib\site-packages\rest_framework\serializers.py', line 962, in create
 E               instance = ModelClass._default_manager.create(**validated_data)
-E             File "D:\Dev\api_yamdb\venv\lib\site-packages\django\db\models\manager.py", line 85, in manager_method
+E             File 'D:\Dev\api_yamdb\venv\lib\site-packages\django\db\models\manager.py', line 85, in manager_method
 E               return getattr(self.get_queryset(), name)(*args, **kwargs)
-E             File "D:\Dev\api_yamdb\venv\lib\site-packages\django\db\models\query.py", line 451, in create
+E             File 'D:\Dev\api_yamdb\venv\lib\site-packages\django\db\models\query.py', line 451, in create
 E               obj = self.model(**kwargs)
-E             File "D:\Dev\api_yamdb\venv\lib\site-packages\django\db\models\base.py", line 503, in __init__
-E               raise TypeError("%s() got an unexpected keyword argument '%s'" % (cls.__name__, kwarg))
+E             File 'D:\Dev\api_yamdb\venv\lib\site-packages\django\db\models\base.py', line 503, in __init__
+E               raise TypeError('%s() got an unexpected keyword argument '%s'' % (cls.__name__, kwarg))
 E           TypeError: Comment() got an unexpected keyword argument 'title'
 
 venv\lib\site-packages\rest_framework\serializers.py:981: TypeError
@@ -1528,62 +1528,62 @@ venv\lib\site-packages\rest_framework\serializers.py:981: TypeError
 WARNING  django.request:log.py:224 Bad Request: /api/v1/titles/26/reviews/22/comments/
 ERROR    django.request:log.py:224 Internal Server Error: /api/v1/titles/26/reviews/22/comments/
 Traceback (most recent call last):
-  File "D:\Dev\api_yamdb\venv\lib\site-packages\rest_framework\serializers.py", line 962, in create
+  File 'D:\Dev\api_yamdb\venv\lib\site-packages\rest_framework\serializers.py', line 962, in create
     instance = ModelClass._default_manager.create(**validated_data)
-  File "D:\Dev\api_yamdb\venv\lib\site-packages\django\db\models\manager.py", line 85, in manager_method
+  File 'D:\Dev\api_yamdb\venv\lib\site-packages\django\db\models\manager.py', line 85, in manager_method
     return getattr(self.get_queryset(), name)(*args, **kwargs)
-  File "D:\Dev\api_yamdb\venv\lib\site-packages\django\db\models\query.py", line 451, in create
+  File 'D:\Dev\api_yamdb\venv\lib\site-packages\django\db\models\query.py', line 451, in create
     obj = self.model(**kwargs)
-  File "D:\Dev\api_yamdb\venv\lib\site-packages\django\db\models\base.py", line 503, in __init__
-    raise TypeError("%s() got an unexpected keyword argument '%s'" % (cls.__name__, kwarg))
+  File 'D:\Dev\api_yamdb\venv\lib\site-packages\django\db\models\base.py', line 503, in __init__
+    raise TypeError('%s() got an unexpected keyword argument '%s'' % (cls.__name__, kwarg))
 TypeError: Comment() got an unexpected keyword argument 'title'
 
 During handling of the above exception, another exception occurred:
 
 Traceback (most recent call last):
-  File "D:\Dev\api_yamdb\venv\lib\site-packages\django\core\handlers\exception.py", line 47, in inner
+  File 'D:\Dev\api_yamdb\venv\lib\site-packages\django\core\handlers\exception.py', line 47, in inner
     response = get_response(request)
-  File "D:\Dev\api_yamdb\venv\lib\site-packages\django\core\handlers\base.py", line 181, in _get_response
+  File 'D:\Dev\api_yamdb\venv\lib\site-packages\django\core\handlers\base.py', line 181, in _get_response
     response = wrapped_callback(request, *callback_args, **callback_kwargs)
-  File "D:\Dev\api_yamdb\venv\lib\site-packages\django\views\decorators\csrf.py", line 54, in wrapped_view
+  File 'D:\Dev\api_yamdb\venv\lib\site-packages\django\views\decorators\csrf.py', line 54, in wrapped_view
     return view_func(*args, **kwargs)
-  File "D:\Dev\api_yamdb\venv\lib\site-packages\rest_framework\viewsets.py", line 125, in view
+  File 'D:\Dev\api_yamdb\venv\lib\site-packages\rest_framework\viewsets.py', line 125, in view
     return self.dispatch(request, *args, **kwargs)
-  File "D:\Dev\api_yamdb\venv\lib\site-packages\rest_framework\views.py", line 509, in dispatch
+  File 'D:\Dev\api_yamdb\venv\lib\site-packages\rest_framework\views.py', line 509, in dispatch
     response = self.handle_exception(exc)
-  File "D:\Dev\api_yamdb\venv\lib\site-packages\rest_framework\views.py", line 469, in handle_exception
+  File 'D:\Dev\api_yamdb\venv\lib\site-packages\rest_framework\views.py', line 469, in handle_exception
     self.raise_uncaught_exception(exc)
-  File "D:\Dev\api_yamdb\venv\lib\site-packages\rest_framework\views.py", line 480, in raise_uncaught_exception
+  File 'D:\Dev\api_yamdb\venv\lib\site-packages\rest_framework\views.py', line 480, in raise_uncaught_exception
     raise exc
-  File "D:\Dev\api_yamdb\venv\lib\site-packages\rest_framework\views.py", line 506, in dispatch
+  File 'D:\Dev\api_yamdb\venv\lib\site-packages\rest_framework\views.py', line 506, in dispatch
     response = handler(request, *args, **kwargs)
-  File "D:\Dev\api_yamdb\venv\lib\site-packages\rest_framework\mixins.py", line 19, in create
+  File 'D:\Dev\api_yamdb\venv\lib\site-packages\rest_framework\mixins.py', line 19, in create
     self.perform_create(serializer)
-  File "D:\Dev\api_yamdb\api_yamdb\api\views.py", line 134, in perform_create
+  File 'D:\Dev\api_yamdb\api_yamdb\api\views.py', line 134, in perform_create
     serializer.save(author=self.request.user, title=title)
-  File "D:\Dev\api_yamdb\venv\lib\site-packages\rest_framework\serializers.py", line 212, in save
+  File 'D:\Dev\api_yamdb\venv\lib\site-packages\rest_framework\serializers.py', line 212, in save
     self.instance = self.create(validated_data)
-  File "D:\Dev\api_yamdb\api_yamdb\api\serializers.py", line 116, in create
+  File 'D:\Dev\api_yamdb\api_yamdb\api\serializers.py', line 116, in create
     return super().create(validated_data)
-  File "D:\Dev\api_yamdb\venv\lib\site-packages\rest_framework\serializers.py", line 981, in create
+  File 'D:\Dev\api_yamdb\venv\lib\site-packages\rest_framework\serializers.py', line 981, in create
     raise TypeError(msg)
 TypeError: Got a `TypeError` when calling `Comment.objects.create()`. This may be because you have a writable field on the serializer class that is not a valid argument to `Comment.objects.create()`. You may need to make the field read-only, or override the CommentSerializer.create() method to handle this correctly.
 Original exception was:
  Traceback (most recent call last):
-  File "D:\Dev\api_yamdb\venv\lib\site-packages\rest_framework\serializers.py", line 962, in create
+  File 'D:\Dev\api_yamdb\venv\lib\site-packages\rest_framework\serializers.py', line 962, in create
     instance = ModelClass._default_manager.create(**validated_data)
-  File "D:\Dev\api_yamdb\venv\lib\site-packages\django\db\models\manager.py", line 85, in manager_method
+  File 'D:\Dev\api_yamdb\venv\lib\site-packages\django\db\models\manager.py', line 85, in manager_method
     return getattr(self.get_queryset(), name)(*args, **kwargs)
-  File "D:\Dev\api_yamdb\venv\lib\site-packages\django\db\models\query.py", line 451, in create
+  File 'D:\Dev\api_yamdb\venv\lib\site-packages\django\db\models\query.py', line 451, in create
     obj = self.model(**kwargs)
-  File "D:\Dev\api_yamdb\venv\lib\site-packages\django\db\models\base.py", line 503, in __init__
-    raise TypeError("%s() got an unexpected keyword argument '%s'" % (cls.__name__, kwarg))
+  File 'D:\Dev\api_yamdb\venv\lib\site-packages\django\db\models\base.py', line 503, in __init__
+    raise TypeError('%s() got an unexpected keyword argument '%s'' % (cls.__name__, kwarg))
 TypeError: Comment() got an unexpected keyword argument 'title'
 _________________ Test06CommentAPI.test_03_comment_detail_get _________________
 
 self = CommentSerializer(context={'request': <rest_framework.request.Request: POST '/api/v1/titles/28/reviews/25/comments/'>,...or = SlugRelatedField(read_only=True, slug_field='username')
-    pub_date = DateTimeField(label='Дата', read_only=True)
-validated_data = {'author': <User: TestAdmin>, 'review': <Review: review number 1>, 'text': 'comment number 1', 'title': <Title: Терминатор>}
+    pub_date = DateTimeField(label='пїЅпїЅпїЅпїЅ', read_only=True)
+validated_data = {'author': <User: TestAdmin>, 'review': <Review: review number 1>, 'text': 'comment number 1', 'title': <Title: пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ>}
 
     def create(self, validated_data):
         """
@@ -1627,7 +1627,7 @@ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
 
 self = <django.db.models.manager.Manager object at 0x000002507778A970>
 args = ()
-kwargs = {'author': <User: TestAdmin>, 'review': <Review: review number 1>, 'text': 'comment number 1', 'title': <Title: Терминатор>}
+kwargs = {'author': <User: TestAdmin>, 'review': <Review: review number 1>, 'text': 'comment number 1', 'title': <Title: пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ>}
 
     def manager_method(self, *args, **kwargs):
 >       return getattr(self.get_queryset(), name)(*args, **kwargs)
@@ -1636,7 +1636,7 @@ venv\lib\site-packages\django\db\models\manager.py:85:
 _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
 
 self = <QuerySet []>
-kwargs = {'author': <User: TestAdmin>, 'review': <Review: review number 1>, 'text': 'comment number 1', 'title': <Title: Терминатор>}
+kwargs = {'author': <User: TestAdmin>, 'review': <Review: review number 1>, 'text': 'comment number 1', 'title': <Title: пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ>}
 
     def create(self, **kwargs):
         """
@@ -1649,7 +1649,7 @@ venv\lib\site-packages\django\db\models\query.py:451:
 _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
 
 self = <Comment: comment number 1>, args = ()
-kwargs = {'title': <Title: Терминатор>}, cls = <class 'reviews.models.Comment'>
+kwargs = {'title': <Title: пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ>}, cls = <class 'reviews.models.Comment'>
 opts = <Options for Comment>, _setattr = <built-in function setattr>
 _DEFERRED = <Deferred field>
 fields_iter = <tuple_iterator object at 0x0000025078EDD4C0>, val = None
@@ -1677,7 +1677,7 @@ property_names = frozenset({'pk'})
         # args, and instantiation for iteration is 33% faster.
         if len(args) > len(opts.concrete_fields):
             # Daft, but matches old exception sans the err msg.
-            raise IndexError("Number of args exceeds number of fields")
+            raise IndexError('Number of args exceeds number of fields')
     
         if not kwargs:
             fields_iter = iter(opts.concrete_fields)
@@ -1732,8 +1732,8 @@ property_names = frozenset({'pk'})
     
             if is_related_object:
                 # If we are passed a related instance, set it using the
-                # field.name instead of field.attname (e.g. "user" instead of
-                # "user_id") so that the object gets properly cached (and type
+                # field.name instead of field.attname (e.g. 'user' instead of
+                # 'user_id') so that the object gets properly cached (and type
                 # checked) by the RelatedObjectDescriptor.
                 if rel_obj is not _DEFERRED:
                     _setattr(self, field.name, rel_obj)
@@ -1754,7 +1754,7 @@ property_names = frozenset({'pk'})
                 except (AttributeError, FieldDoesNotExist):
                     pass
             for kwarg in kwargs:
->               raise TypeError("%s() got an unexpected keyword argument '%s'" % (cls.__name__, kwarg))
+>               raise TypeError('%s() got an unexpected keyword argument '%s'' % (cls.__name__, kwarg))
 E               TypeError: Comment() got an unexpected keyword argument 'title'
 
 venv\lib\site-packages\django\db\models\base.py:503: TypeError
@@ -1829,8 +1829,8 @@ api_yamdb\api\serializers.py:116: in create
 _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
 
 self = CommentSerializer(context={'request': <rest_framework.request.Request: POST '/api/v1/titles/28/reviews/25/comments/'>,...or = SlugRelatedField(read_only=True, slug_field='username')
-    pub_date = DateTimeField(label='Дата', read_only=True)
-validated_data = {'author': <User: TestAdmin>, 'review': <Review: review number 1>, 'text': 'comment number 1', 'title': <Title: Терминатор>}
+    pub_date = DateTimeField(label='пїЅпїЅпїЅпїЅ', read_only=True)
+validated_data = {'author': <User: TestAdmin>, 'review': <Review: review number 1>, 'text': 'comment number 1', 'title': <Title: пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ>}
 
     def create(self, validated_data):
         """
@@ -1890,76 +1890,76 @@ validated_data = {'author': <User: TestAdmin>, 'review': <Review: review number 
 E           TypeError: Got a `TypeError` when calling `Comment.objects.create()`. This may be because you have a writable field on the serializer class that is not a valid argument to `Comment.objects.create()`. You may need to make the field read-only, or override the CommentSerializer.create() method to handle this correctly.
 E           Original exception was:
 E            Traceback (most recent call last):
-E             File "D:\Dev\api_yamdb\venv\lib\site-packages\rest_framework\serializers.py", line 962, in create
+E             File 'D:\Dev\api_yamdb\venv\lib\site-packages\rest_framework\serializers.py', line 962, in create
 E               instance = ModelClass._default_manager.create(**validated_data)
-E             File "D:\Dev\api_yamdb\venv\lib\site-packages\django\db\models\manager.py", line 85, in manager_method
+E             File 'D:\Dev\api_yamdb\venv\lib\site-packages\django\db\models\manager.py', line 85, in manager_method
 E               return getattr(self.get_queryset(), name)(*args, **kwargs)
-E             File "D:\Dev\api_yamdb\venv\lib\site-packages\django\db\models\query.py", line 451, in create
+E             File 'D:\Dev\api_yamdb\venv\lib\site-packages\django\db\models\query.py', line 451, in create
 E               obj = self.model(**kwargs)
-E             File "D:\Dev\api_yamdb\venv\lib\site-packages\django\db\models\base.py", line 503, in __init__
-E               raise TypeError("%s() got an unexpected keyword argument '%s'" % (cls.__name__, kwarg))
+E             File 'D:\Dev\api_yamdb\venv\lib\site-packages\django\db\models\base.py', line 503, in __init__
+E               raise TypeError('%s() got an unexpected keyword argument '%s'' % (cls.__name__, kwarg))
 E           TypeError: Comment() got an unexpected keyword argument 'title'
 
 venv\lib\site-packages\rest_framework\serializers.py:981: TypeError
 ------------------------------ Captured log call ------------------------------
 ERROR    django.request:log.py:224 Internal Server Error: /api/v1/titles/28/reviews/25/comments/
 Traceback (most recent call last):
-  File "D:\Dev\api_yamdb\venv\lib\site-packages\rest_framework\serializers.py", line 962, in create
+  File 'D:\Dev\api_yamdb\venv\lib\site-packages\rest_framework\serializers.py', line 962, in create
     instance = ModelClass._default_manager.create(**validated_data)
-  File "D:\Dev\api_yamdb\venv\lib\site-packages\django\db\models\manager.py", line 85, in manager_method
+  File 'D:\Dev\api_yamdb\venv\lib\site-packages\django\db\models\manager.py', line 85, in manager_method
     return getattr(self.get_queryset(), name)(*args, **kwargs)
-  File "D:\Dev\api_yamdb\venv\lib\site-packages\django\db\models\query.py", line 451, in create
+  File 'D:\Dev\api_yamdb\venv\lib\site-packages\django\db\models\query.py', line 451, in create
     obj = self.model(**kwargs)
-  File "D:\Dev\api_yamdb\venv\lib\site-packages\django\db\models\base.py", line 503, in __init__
-    raise TypeError("%s() got an unexpected keyword argument '%s'" % (cls.__name__, kwarg))
+  File 'D:\Dev\api_yamdb\venv\lib\site-packages\django\db\models\base.py', line 503, in __init__
+    raise TypeError('%s() got an unexpected keyword argument '%s'' % (cls.__name__, kwarg))
 TypeError: Comment() got an unexpected keyword argument 'title'
 
 During handling of the above exception, another exception occurred:
 
 Traceback (most recent call last):
-  File "D:\Dev\api_yamdb\venv\lib\site-packages\django\core\handlers\exception.py", line 47, in inner
+  File 'D:\Dev\api_yamdb\venv\lib\site-packages\django\core\handlers\exception.py', line 47, in inner
     response = get_response(request)
-  File "D:\Dev\api_yamdb\venv\lib\site-packages\django\core\handlers\base.py", line 181, in _get_response
+  File 'D:\Dev\api_yamdb\venv\lib\site-packages\django\core\handlers\base.py', line 181, in _get_response
     response = wrapped_callback(request, *callback_args, **callback_kwargs)
-  File "D:\Dev\api_yamdb\venv\lib\site-packages\django\views\decorators\csrf.py", line 54, in wrapped_view
+  File 'D:\Dev\api_yamdb\venv\lib\site-packages\django\views\decorators\csrf.py', line 54, in wrapped_view
     return view_func(*args, **kwargs)
-  File "D:\Dev\api_yamdb\venv\lib\site-packages\rest_framework\viewsets.py", line 125, in view
+  File 'D:\Dev\api_yamdb\venv\lib\site-packages\rest_framework\viewsets.py', line 125, in view
     return self.dispatch(request, *args, **kwargs)
-  File "D:\Dev\api_yamdb\venv\lib\site-packages\rest_framework\views.py", line 509, in dispatch
+  File 'D:\Dev\api_yamdb\venv\lib\site-packages\rest_framework\views.py', line 509, in dispatch
     response = self.handle_exception(exc)
-  File "D:\Dev\api_yamdb\venv\lib\site-packages\rest_framework\views.py", line 469, in handle_exception
+  File 'D:\Dev\api_yamdb\venv\lib\site-packages\rest_framework\views.py', line 469, in handle_exception
     self.raise_uncaught_exception(exc)
-  File "D:\Dev\api_yamdb\venv\lib\site-packages\rest_framework\views.py", line 480, in raise_uncaught_exception
+  File 'D:\Dev\api_yamdb\venv\lib\site-packages\rest_framework\views.py', line 480, in raise_uncaught_exception
     raise exc
-  File "D:\Dev\api_yamdb\venv\lib\site-packages\rest_framework\views.py", line 506, in dispatch
+  File 'D:\Dev\api_yamdb\venv\lib\site-packages\rest_framework\views.py', line 506, in dispatch
     response = handler(request, *args, **kwargs)
-  File "D:\Dev\api_yamdb\venv\lib\site-packages\rest_framework\mixins.py", line 19, in create
+  File 'D:\Dev\api_yamdb\venv\lib\site-packages\rest_framework\mixins.py', line 19, in create
     self.perform_create(serializer)
-  File "D:\Dev\api_yamdb\api_yamdb\api\views.py", line 134, in perform_create
+  File 'D:\Dev\api_yamdb\api_yamdb\api\views.py', line 134, in perform_create
     serializer.save(author=self.request.user, title=title)
-  File "D:\Dev\api_yamdb\venv\lib\site-packages\rest_framework\serializers.py", line 212, in save
+  File 'D:\Dev\api_yamdb\venv\lib\site-packages\rest_framework\serializers.py', line 212, in save
     self.instance = self.create(validated_data)
-  File "D:\Dev\api_yamdb\api_yamdb\api\serializers.py", line 116, in create
+  File 'D:\Dev\api_yamdb\api_yamdb\api\serializers.py', line 116, in create
     return super().create(validated_data)
-  File "D:\Dev\api_yamdb\venv\lib\site-packages\rest_framework\serializers.py", line 981, in create
+  File 'D:\Dev\api_yamdb\venv\lib\site-packages\rest_framework\serializers.py', line 981, in create
     raise TypeError(msg)
 TypeError: Got a `TypeError` when calling `Comment.objects.create()`. This may be because you have a writable field on the serializer class that is not a valid argument to `Comment.objects.create()`. You may need to make the field read-only, or override the CommentSerializer.create() method to handle this correctly.
 Original exception was:
  Traceback (most recent call last):
-  File "D:\Dev\api_yamdb\venv\lib\site-packages\rest_framework\serializers.py", line 962, in create
+  File 'D:\Dev\api_yamdb\venv\lib\site-packages\rest_framework\serializers.py', line 962, in create
     instance = ModelClass._default_manager.create(**validated_data)
-  File "D:\Dev\api_yamdb\venv\lib\site-packages\django\db\models\manager.py", line 85, in manager_method
+  File 'D:\Dev\api_yamdb\venv\lib\site-packages\django\db\models\manager.py', line 85, in manager_method
     return getattr(self.get_queryset(), name)(*args, **kwargs)
-  File "D:\Dev\api_yamdb\venv\lib\site-packages\django\db\models\query.py", line 451, in create
+  File 'D:\Dev\api_yamdb\venv\lib\site-packages\django\db\models\query.py', line 451, in create
     obj = self.model(**kwargs)
-  File "D:\Dev\api_yamdb\venv\lib\site-packages\django\db\models\base.py", line 503, in __init__
-    raise TypeError("%s() got an unexpected keyword argument '%s'" % (cls.__name__, kwarg))
+  File 'D:\Dev\api_yamdb\venv\lib\site-packages\django\db\models\base.py', line 503, in __init__
+    raise TypeError('%s() got an unexpected keyword argument '%s'' % (cls.__name__, kwarg))
 TypeError: Comment() got an unexpected keyword argument 'title'
 _________ Test06CommentAPI.test_04_comment_detail__user_patch_delete __________
 
 self = CommentSerializer(context={'request': <rest_framework.request.Request: POST '/api/v1/titles/30/reviews/28/comments/'>,...or = SlugRelatedField(read_only=True, slug_field='username')
-    pub_date = DateTimeField(label='Дата', read_only=True)
-validated_data = {'author': <User: TestAdmin>, 'review': <Review: review number 1>, 'text': 'comment number 1', 'title': <Title: Терминатор>}
+    pub_date = DateTimeField(label='пїЅпїЅпїЅпїЅ', read_only=True)
+validated_data = {'author': <User: TestAdmin>, 'review': <Review: review number 1>, 'text': 'comment number 1', 'title': <Title: пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ>}
 
     def create(self, validated_data):
         """
@@ -2003,7 +2003,7 @@ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
 
 self = <django.db.models.manager.Manager object at 0x000002507778A970>
 args = ()
-kwargs = {'author': <User: TestAdmin>, 'review': <Review: review number 1>, 'text': 'comment number 1', 'title': <Title: Терминатор>}
+kwargs = {'author': <User: TestAdmin>, 'review': <Review: review number 1>, 'text': 'comment number 1', 'title': <Title: пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ>}
 
     def manager_method(self, *args, **kwargs):
 >       return getattr(self.get_queryset(), name)(*args, **kwargs)
@@ -2012,7 +2012,7 @@ venv\lib\site-packages\django\db\models\manager.py:85:
 _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
 
 self = <QuerySet []>
-kwargs = {'author': <User: TestAdmin>, 'review': <Review: review number 1>, 'text': 'comment number 1', 'title': <Title: Терминатор>}
+kwargs = {'author': <User: TestAdmin>, 'review': <Review: review number 1>, 'text': 'comment number 1', 'title': <Title: пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ>}
 
     def create(self, **kwargs):
         """
@@ -2025,7 +2025,7 @@ venv\lib\site-packages\django\db\models\query.py:451:
 _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
 
 self = <Comment: comment number 1>, args = ()
-kwargs = {'title': <Title: Терминатор>}, cls = <class 'reviews.models.Comment'>
+kwargs = {'title': <Title: пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ>}, cls = <class 'reviews.models.Comment'>
 opts = <Options for Comment>, _setattr = <built-in function setattr>
 _DEFERRED = <Deferred field>
 fields_iter = <tuple_iterator object at 0x0000025077BF9400>, val = None
@@ -2053,7 +2053,7 @@ property_names = frozenset({'pk'})
         # args, and instantiation for iteration is 33% faster.
         if len(args) > len(opts.concrete_fields):
             # Daft, but matches old exception sans the err msg.
-            raise IndexError("Number of args exceeds number of fields")
+            raise IndexError('Number of args exceeds number of fields')
     
         if not kwargs:
             fields_iter = iter(opts.concrete_fields)
@@ -2108,8 +2108,8 @@ property_names = frozenset({'pk'})
     
             if is_related_object:
                 # If we are passed a related instance, set it using the
-                # field.name instead of field.attname (e.g. "user" instead of
-                # "user_id") so that the object gets properly cached (and type
+                # field.name instead of field.attname (e.g. 'user' instead of
+                # 'user_id') so that the object gets properly cached (and type
                 # checked) by the RelatedObjectDescriptor.
                 if rel_obj is not _DEFERRED:
                     _setattr(self, field.name, rel_obj)
@@ -2130,7 +2130,7 @@ property_names = frozenset({'pk'})
                 except (AttributeError, FieldDoesNotExist):
                     pass
             for kwarg in kwargs:
->               raise TypeError("%s() got an unexpected keyword argument '%s'" % (cls.__name__, kwarg))
+>               raise TypeError('%s() got an unexpected keyword argument '%s'' % (cls.__name__, kwarg))
 E               TypeError: Comment() got an unexpected keyword argument 'title'
 
 venv\lib\site-packages\django\db\models\base.py:503: TypeError
@@ -2205,8 +2205,8 @@ api_yamdb\api\serializers.py:116: in create
 _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
 
 self = CommentSerializer(context={'request': <rest_framework.request.Request: POST '/api/v1/titles/30/reviews/28/comments/'>,...or = SlugRelatedField(read_only=True, slug_field='username')
-    pub_date = DateTimeField(label='Дата', read_only=True)
-validated_data = {'author': <User: TestAdmin>, 'review': <Review: review number 1>, 'text': 'comment number 1', 'title': <Title: Терминатор>}
+    pub_date = DateTimeField(label='пїЅпїЅпїЅпїЅ', read_only=True)
+validated_data = {'author': <User: TestAdmin>, 'review': <Review: review number 1>, 'text': 'comment number 1', 'title': <Title: пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ>}
 
     def create(self, validated_data):
         """
@@ -2266,76 +2266,76 @@ validated_data = {'author': <User: TestAdmin>, 'review': <Review: review number 
 E           TypeError: Got a `TypeError` when calling `Comment.objects.create()`. This may be because you have a writable field on the serializer class that is not a valid argument to `Comment.objects.create()`. You may need to make the field read-only, or override the CommentSerializer.create() method to handle this correctly.
 E           Original exception was:
 E            Traceback (most recent call last):
-E             File "D:\Dev\api_yamdb\venv\lib\site-packages\rest_framework\serializers.py", line 962, in create
+E             File 'D:\Dev\api_yamdb\venv\lib\site-packages\rest_framework\serializers.py', line 962, in create
 E               instance = ModelClass._default_manager.create(**validated_data)
-E             File "D:\Dev\api_yamdb\venv\lib\site-packages\django\db\models\manager.py", line 85, in manager_method
+E             File 'D:\Dev\api_yamdb\venv\lib\site-packages\django\db\models\manager.py', line 85, in manager_method
 E               return getattr(self.get_queryset(), name)(*args, **kwargs)
-E             File "D:\Dev\api_yamdb\venv\lib\site-packages\django\db\models\query.py", line 451, in create
+E             File 'D:\Dev\api_yamdb\venv\lib\site-packages\django\db\models\query.py', line 451, in create
 E               obj = self.model(**kwargs)
-E             File "D:\Dev\api_yamdb\venv\lib\site-packages\django\db\models\base.py", line 503, in __init__
-E               raise TypeError("%s() got an unexpected keyword argument '%s'" % (cls.__name__, kwarg))
+E             File 'D:\Dev\api_yamdb\venv\lib\site-packages\django\db\models\base.py', line 503, in __init__
+E               raise TypeError('%s() got an unexpected keyword argument '%s'' % (cls.__name__, kwarg))
 E           TypeError: Comment() got an unexpected keyword argument 'title'
 
 venv\lib\site-packages\rest_framework\serializers.py:981: TypeError
 ------------------------------ Captured log call ------------------------------
 ERROR    django.request:log.py:224 Internal Server Error: /api/v1/titles/30/reviews/28/comments/
 Traceback (most recent call last):
-  File "D:\Dev\api_yamdb\venv\lib\site-packages\rest_framework\serializers.py", line 962, in create
+  File 'D:\Dev\api_yamdb\venv\lib\site-packages\rest_framework\serializers.py', line 962, in create
     instance = ModelClass._default_manager.create(**validated_data)
-  File "D:\Dev\api_yamdb\venv\lib\site-packages\django\db\models\manager.py", line 85, in manager_method
+  File 'D:\Dev\api_yamdb\venv\lib\site-packages\django\db\models\manager.py', line 85, in manager_method
     return getattr(self.get_queryset(), name)(*args, **kwargs)
-  File "D:\Dev\api_yamdb\venv\lib\site-packages\django\db\models\query.py", line 451, in create
+  File 'D:\Dev\api_yamdb\venv\lib\site-packages\django\db\models\query.py', line 451, in create
     obj = self.model(**kwargs)
-  File "D:\Dev\api_yamdb\venv\lib\site-packages\django\db\models\base.py", line 503, in __init__
-    raise TypeError("%s() got an unexpected keyword argument '%s'" % (cls.__name__, kwarg))
+  File 'D:\Dev\api_yamdb\venv\lib\site-packages\django\db\models\base.py', line 503, in __init__
+    raise TypeError('%s() got an unexpected keyword argument '%s'' % (cls.__name__, kwarg))
 TypeError: Comment() got an unexpected keyword argument 'title'
 
 During handling of the above exception, another exception occurred:
 
 Traceback (most recent call last):
-  File "D:\Dev\api_yamdb\venv\lib\site-packages\django\core\handlers\exception.py", line 47, in inner
+  File 'D:\Dev\api_yamdb\venv\lib\site-packages\django\core\handlers\exception.py', line 47, in inner
     response = get_response(request)
-  File "D:\Dev\api_yamdb\venv\lib\site-packages\django\core\handlers\base.py", line 181, in _get_response
+  File 'D:\Dev\api_yamdb\venv\lib\site-packages\django\core\handlers\base.py', line 181, in _get_response
     response = wrapped_callback(request, *callback_args, **callback_kwargs)
-  File "D:\Dev\api_yamdb\venv\lib\site-packages\django\views\decorators\csrf.py", line 54, in wrapped_view
+  File 'D:\Dev\api_yamdb\venv\lib\site-packages\django\views\decorators\csrf.py', line 54, in wrapped_view
     return view_func(*args, **kwargs)
-  File "D:\Dev\api_yamdb\venv\lib\site-packages\rest_framework\viewsets.py", line 125, in view
+  File 'D:\Dev\api_yamdb\venv\lib\site-packages\rest_framework\viewsets.py', line 125, in view
     return self.dispatch(request, *args, **kwargs)
-  File "D:\Dev\api_yamdb\venv\lib\site-packages\rest_framework\views.py", line 509, in dispatch
+  File 'D:\Dev\api_yamdb\venv\lib\site-packages\rest_framework\views.py', line 509, in dispatch
     response = self.handle_exception(exc)
-  File "D:\Dev\api_yamdb\venv\lib\site-packages\rest_framework\views.py", line 469, in handle_exception
+  File 'D:\Dev\api_yamdb\venv\lib\site-packages\rest_framework\views.py', line 469, in handle_exception
     self.raise_uncaught_exception(exc)
-  File "D:\Dev\api_yamdb\venv\lib\site-packages\rest_framework\views.py", line 480, in raise_uncaught_exception
+  File 'D:\Dev\api_yamdb\venv\lib\site-packages\rest_framework\views.py', line 480, in raise_uncaught_exception
     raise exc
-  File "D:\Dev\api_yamdb\venv\lib\site-packages\rest_framework\views.py", line 506, in dispatch
+  File 'D:\Dev\api_yamdb\venv\lib\site-packages\rest_framework\views.py', line 506, in dispatch
     response = handler(request, *args, **kwargs)
-  File "D:\Dev\api_yamdb\venv\lib\site-packages\rest_framework\mixins.py", line 19, in create
+  File 'D:\Dev\api_yamdb\venv\lib\site-packages\rest_framework\mixins.py', line 19, in create
     self.perform_create(serializer)
-  File "D:\Dev\api_yamdb\api_yamdb\api\views.py", line 134, in perform_create
+  File 'D:\Dev\api_yamdb\api_yamdb\api\views.py', line 134, in perform_create
     serializer.save(author=self.request.user, title=title)
-  File "D:\Dev\api_yamdb\venv\lib\site-packages\rest_framework\serializers.py", line 212, in save
+  File 'D:\Dev\api_yamdb\venv\lib\site-packages\rest_framework\serializers.py', line 212, in save
     self.instance = self.create(validated_data)
-  File "D:\Dev\api_yamdb\api_yamdb\api\serializers.py", line 116, in create
+  File 'D:\Dev\api_yamdb\api_yamdb\api\serializers.py', line 116, in create
     return super().create(validated_data)
-  File "D:\Dev\api_yamdb\venv\lib\site-packages\rest_framework\serializers.py", line 981, in create
+  File 'D:\Dev\api_yamdb\venv\lib\site-packages\rest_framework\serializers.py', line 981, in create
     raise TypeError(msg)
 TypeError: Got a `TypeError` when calling `Comment.objects.create()`. This may be because you have a writable field on the serializer class that is not a valid argument to `Comment.objects.create()`. You may need to make the field read-only, or override the CommentSerializer.create() method to handle this correctly.
 Original exception was:
  Traceback (most recent call last):
-  File "D:\Dev\api_yamdb\venv\lib\site-packages\rest_framework\serializers.py", line 962, in create
+  File 'D:\Dev\api_yamdb\venv\lib\site-packages\rest_framework\serializers.py', line 962, in create
     instance = ModelClass._default_manager.create(**validated_data)
-  File "D:\Dev\api_yamdb\venv\lib\site-packages\django\db\models\manager.py", line 85, in manager_method
+  File 'D:\Dev\api_yamdb\venv\lib\site-packages\django\db\models\manager.py', line 85, in manager_method
     return getattr(self.get_queryset(), name)(*args, **kwargs)
-  File "D:\Dev\api_yamdb\venv\lib\site-packages\django\db\models\query.py", line 451, in create
+  File 'D:\Dev\api_yamdb\venv\lib\site-packages\django\db\models\query.py', line 451, in create
     obj = self.model(**kwargs)
-  File "D:\Dev\api_yamdb\venv\lib\site-packages\django\db\models\base.py", line 503, in __init__
-    raise TypeError("%s() got an unexpected keyword argument '%s'" % (cls.__name__, kwarg))
+  File 'D:\Dev\api_yamdb\venv\lib\site-packages\django\db\models\base.py', line 503, in __init__
+    raise TypeError('%s() got an unexpected keyword argument '%s'' % (cls.__name__, kwarg))
 TypeError: Comment() got an unexpected keyword argument 'title'
 _________ Test06CommentAPI.test_05_comment_detail_admin_and_moderator _________
 
 self = CommentSerializer(context={'request': <rest_framework.request.Request: POST '/api/v1/titles/32/reviews/31/comments/'>,...or = SlugRelatedField(read_only=True, slug_field='username')
-    pub_date = DateTimeField(label='Дата', read_only=True)
-validated_data = {'author': <User: TestAdmin>, 'review': <Review: review number 1>, 'text': 'comment number 1', 'title': <Title: Терминатор>}
+    pub_date = DateTimeField(label='пїЅпїЅпїЅпїЅ', read_only=True)
+validated_data = {'author': <User: TestAdmin>, 'review': <Review: review number 1>, 'text': 'comment number 1', 'title': <Title: пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ>}
 
     def create(self, validated_data):
         """
@@ -2379,7 +2379,7 @@ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
 
 self = <django.db.models.manager.Manager object at 0x000002507778A970>
 args = ()
-kwargs = {'author': <User: TestAdmin>, 'review': <Review: review number 1>, 'text': 'comment number 1', 'title': <Title: Терминатор>}
+kwargs = {'author': <User: TestAdmin>, 'review': <Review: review number 1>, 'text': 'comment number 1', 'title': <Title: пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ>}
 
     def manager_method(self, *args, **kwargs):
 >       return getattr(self.get_queryset(), name)(*args, **kwargs)
@@ -2388,7 +2388,7 @@ venv\lib\site-packages\django\db\models\manager.py:85:
 _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
 
 self = <QuerySet []>
-kwargs = {'author': <User: TestAdmin>, 'review': <Review: review number 1>, 'text': 'comment number 1', 'title': <Title: Терминатор>}
+kwargs = {'author': <User: TestAdmin>, 'review': <Review: review number 1>, 'text': 'comment number 1', 'title': <Title: пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ>}
 
     def create(self, **kwargs):
         """
@@ -2401,7 +2401,7 @@ venv\lib\site-packages\django\db\models\query.py:451:
 _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
 
 self = <Comment: comment number 1>, args = ()
-kwargs = {'title': <Title: Терминатор>}, cls = <class 'reviews.models.Comment'>
+kwargs = {'title': <Title: пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ>}, cls = <class 'reviews.models.Comment'>
 opts = <Options for Comment>, _setattr = <built-in function setattr>
 _DEFERRED = <Deferred field>
 fields_iter = <tuple_iterator object at 0x00000250777F8A60>, val = None
@@ -2429,7 +2429,7 @@ property_names = frozenset({'pk'})
         # args, and instantiation for iteration is 33% faster.
         if len(args) > len(opts.concrete_fields):
             # Daft, but matches old exception sans the err msg.
-            raise IndexError("Number of args exceeds number of fields")
+            raise IndexError('Number of args exceeds number of fields')
     
         if not kwargs:
             fields_iter = iter(opts.concrete_fields)
@@ -2484,8 +2484,8 @@ property_names = frozenset({'pk'})
     
             if is_related_object:
                 # If we are passed a related instance, set it using the
-                # field.name instead of field.attname (e.g. "user" instead of
-                # "user_id") so that the object gets properly cached (and type
+                # field.name instead of field.attname (e.g. 'user' instead of
+                # 'user_id') so that the object gets properly cached (and type
                 # checked) by the RelatedObjectDescriptor.
                 if rel_obj is not _DEFERRED:
                     _setattr(self, field.name, rel_obj)
@@ -2506,7 +2506,7 @@ property_names = frozenset({'pk'})
                 except (AttributeError, FieldDoesNotExist):
                     pass
             for kwarg in kwargs:
->               raise TypeError("%s() got an unexpected keyword argument '%s'" % (cls.__name__, kwarg))
+>               raise TypeError('%s() got an unexpected keyword argument '%s'' % (cls.__name__, kwarg))
 E               TypeError: Comment() got an unexpected keyword argument 'title'
 
 venv\lib\site-packages\django\db\models\base.py:503: TypeError
@@ -2581,8 +2581,8 @@ api_yamdb\api\serializers.py:116: in create
 _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
 
 self = CommentSerializer(context={'request': <rest_framework.request.Request: POST '/api/v1/titles/32/reviews/31/comments/'>,...or = SlugRelatedField(read_only=True, slug_field='username')
-    pub_date = DateTimeField(label='Дата', read_only=True)
-validated_data = {'author': <User: TestAdmin>, 'review': <Review: review number 1>, 'text': 'comment number 1', 'title': <Title: Терминатор>}
+    pub_date = DateTimeField(label='пїЅпїЅпїЅпїЅ', read_only=True)
+validated_data = {'author': <User: TestAdmin>, 'review': <Review: review number 1>, 'text': 'comment number 1', 'title': <Title: пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ>}
 
     def create(self, validated_data):
         """
@@ -2642,76 +2642,76 @@ validated_data = {'author': <User: TestAdmin>, 'review': <Review: review number 
 E           TypeError: Got a `TypeError` when calling `Comment.objects.create()`. This may be because you have a writable field on the serializer class that is not a valid argument to `Comment.objects.create()`. You may need to make the field read-only, or override the CommentSerializer.create() method to handle this correctly.
 E           Original exception was:
 E            Traceback (most recent call last):
-E             File "D:\Dev\api_yamdb\venv\lib\site-packages\rest_framework\serializers.py", line 962, in create
+E             File 'D:\Dev\api_yamdb\venv\lib\site-packages\rest_framework\serializers.py', line 962, in create
 E               instance = ModelClass._default_manager.create(**validated_data)
-E             File "D:\Dev\api_yamdb\venv\lib\site-packages\django\db\models\manager.py", line 85, in manager_method
+E             File 'D:\Dev\api_yamdb\venv\lib\site-packages\django\db\models\manager.py', line 85, in manager_method
 E               return getattr(self.get_queryset(), name)(*args, **kwargs)
-E             File "D:\Dev\api_yamdb\venv\lib\site-packages\django\db\models\query.py", line 451, in create
+E             File 'D:\Dev\api_yamdb\venv\lib\site-packages\django\db\models\query.py', line 451, in create
 E               obj = self.model(**kwargs)
-E             File "D:\Dev\api_yamdb\venv\lib\site-packages\django\db\models\base.py", line 503, in __init__
-E               raise TypeError("%s() got an unexpected keyword argument '%s'" % (cls.__name__, kwarg))
+E             File 'D:\Dev\api_yamdb\venv\lib\site-packages\django\db\models\base.py', line 503, in __init__
+E               raise TypeError('%s() got an unexpected keyword argument '%s'' % (cls.__name__, kwarg))
 E           TypeError: Comment() got an unexpected keyword argument 'title'
 
 venv\lib\site-packages\rest_framework\serializers.py:981: TypeError
 ------------------------------ Captured log call ------------------------------
 ERROR    django.request:log.py:224 Internal Server Error: /api/v1/titles/32/reviews/31/comments/
 Traceback (most recent call last):
-  File "D:\Dev\api_yamdb\venv\lib\site-packages\rest_framework\serializers.py", line 962, in create
+  File 'D:\Dev\api_yamdb\venv\lib\site-packages\rest_framework\serializers.py', line 962, in create
     instance = ModelClass._default_manager.create(**validated_data)
-  File "D:\Dev\api_yamdb\venv\lib\site-packages\django\db\models\manager.py", line 85, in manager_method
+  File 'D:\Dev\api_yamdb\venv\lib\site-packages\django\db\models\manager.py', line 85, in manager_method
     return getattr(self.get_queryset(), name)(*args, **kwargs)
-  File "D:\Dev\api_yamdb\venv\lib\site-packages\django\db\models\query.py", line 451, in create
+  File 'D:\Dev\api_yamdb\venv\lib\site-packages\django\db\models\query.py', line 451, in create
     obj = self.model(**kwargs)
-  File "D:\Dev\api_yamdb\venv\lib\site-packages\django\db\models\base.py", line 503, in __init__
-    raise TypeError("%s() got an unexpected keyword argument '%s'" % (cls.__name__, kwarg))
+  File 'D:\Dev\api_yamdb\venv\lib\site-packages\django\db\models\base.py', line 503, in __init__
+    raise TypeError('%s() got an unexpected keyword argument '%s'' % (cls.__name__, kwarg))
 TypeError: Comment() got an unexpected keyword argument 'title'
 
 During handling of the above exception, another exception occurred:
 
 Traceback (most recent call last):
-  File "D:\Dev\api_yamdb\venv\lib\site-packages\django\core\handlers\exception.py", line 47, in inner
+  File 'D:\Dev\api_yamdb\venv\lib\site-packages\django\core\handlers\exception.py', line 47, in inner
     response = get_response(request)
-  File "D:\Dev\api_yamdb\venv\lib\site-packages\django\core\handlers\base.py", line 181, in _get_response
+  File 'D:\Dev\api_yamdb\venv\lib\site-packages\django\core\handlers\base.py', line 181, in _get_response
     response = wrapped_callback(request, *callback_args, **callback_kwargs)
-  File "D:\Dev\api_yamdb\venv\lib\site-packages\django\views\decorators\csrf.py", line 54, in wrapped_view
+  File 'D:\Dev\api_yamdb\venv\lib\site-packages\django\views\decorators\csrf.py', line 54, in wrapped_view
     return view_func(*args, **kwargs)
-  File "D:\Dev\api_yamdb\venv\lib\site-packages\rest_framework\viewsets.py", line 125, in view
+  File 'D:\Dev\api_yamdb\venv\lib\site-packages\rest_framework\viewsets.py', line 125, in view
     return self.dispatch(request, *args, **kwargs)
-  File "D:\Dev\api_yamdb\venv\lib\site-packages\rest_framework\views.py", line 509, in dispatch
+  File 'D:\Dev\api_yamdb\venv\lib\site-packages\rest_framework\views.py', line 509, in dispatch
     response = self.handle_exception(exc)
-  File "D:\Dev\api_yamdb\venv\lib\site-packages\rest_framework\views.py", line 469, in handle_exception
+  File 'D:\Dev\api_yamdb\venv\lib\site-packages\rest_framework\views.py', line 469, in handle_exception
     self.raise_uncaught_exception(exc)
-  File "D:\Dev\api_yamdb\venv\lib\site-packages\rest_framework\views.py", line 480, in raise_uncaught_exception
+  File 'D:\Dev\api_yamdb\venv\lib\site-packages\rest_framework\views.py', line 480, in raise_uncaught_exception
     raise exc
-  File "D:\Dev\api_yamdb\venv\lib\site-packages\rest_framework\views.py", line 506, in dispatch
+  File 'D:\Dev\api_yamdb\venv\lib\site-packages\rest_framework\views.py', line 506, in dispatch
     response = handler(request, *args, **kwargs)
-  File "D:\Dev\api_yamdb\venv\lib\site-packages\rest_framework\mixins.py", line 19, in create
+  File 'D:\Dev\api_yamdb\venv\lib\site-packages\rest_framework\mixins.py', line 19, in create
     self.perform_create(serializer)
-  File "D:\Dev\api_yamdb\api_yamdb\api\views.py", line 134, in perform_create
+  File 'D:\Dev\api_yamdb\api_yamdb\api\views.py', line 134, in perform_create
     serializer.save(author=self.request.user, title=title)
-  File "D:\Dev\api_yamdb\venv\lib\site-packages\rest_framework\serializers.py", line 212, in save
+  File 'D:\Dev\api_yamdb\venv\lib\site-packages\rest_framework\serializers.py', line 212, in save
     self.instance = self.create(validated_data)
-  File "D:\Dev\api_yamdb\api_yamdb\api\serializers.py", line 116, in create
+  File 'D:\Dev\api_yamdb\api_yamdb\api\serializers.py', line 116, in create
     return super().create(validated_data)
-  File "D:\Dev\api_yamdb\venv\lib\site-packages\rest_framework\serializers.py", line 981, in create
+  File 'D:\Dev\api_yamdb\venv\lib\site-packages\rest_framework\serializers.py', line 981, in create
     raise TypeError(msg)
 TypeError: Got a `TypeError` when calling `Comment.objects.create()`. This may be because you have a writable field on the serializer class that is not a valid argument to `Comment.objects.create()`. You may need to make the field read-only, or override the CommentSerializer.create() method to handle this correctly.
 Original exception was:
  Traceback (most recent call last):
-  File "D:\Dev\api_yamdb\venv\lib\site-packages\rest_framework\serializers.py", line 962, in create
+  File 'D:\Dev\api_yamdb\venv\lib\site-packages\rest_framework\serializers.py', line 962, in create
     instance = ModelClass._default_manager.create(**validated_data)
-  File "D:\Dev\api_yamdb\venv\lib\site-packages\django\db\models\manager.py", line 85, in manager_method
+  File 'D:\Dev\api_yamdb\venv\lib\site-packages\django\db\models\manager.py', line 85, in manager_method
     return getattr(self.get_queryset(), name)(*args, **kwargs)
-  File "D:\Dev\api_yamdb\venv\lib\site-packages\django\db\models\query.py", line 451, in create
+  File 'D:\Dev\api_yamdb\venv\lib\site-packages\django\db\models\query.py', line 451, in create
     obj = self.model(**kwargs)
-  File "D:\Dev\api_yamdb\venv\lib\site-packages\django\db\models\base.py", line 503, in __init__
-    raise TypeError("%s() got an unexpected keyword argument '%s'" % (cls.__name__, kwarg))
+  File 'D:\Dev\api_yamdb\venv\lib\site-packages\django\db\models\base.py', line 503, in __init__
+    raise TypeError('%s() got an unexpected keyword argument '%s'' % (cls.__name__, kwarg))
 TypeError: Comment() got an unexpected keyword argument 'title'
 ______________ Test06CommentAPI.test_06_comment_detail_not_auth _______________
 
 self = CommentSerializer(context={'request': <rest_framework.request.Request: POST '/api/v1/titles/34/reviews/34/comments/'>,...or = SlugRelatedField(read_only=True, slug_field='username')
-    pub_date = DateTimeField(label='Дата', read_only=True)
-validated_data = {'author': <User: TestAdmin>, 'review': <Review: review number 1>, 'text': 'comment number 1', 'title': <Title: Терминатор>}
+    pub_date = DateTimeField(label='пїЅпїЅпїЅпїЅ', read_only=True)
+validated_data = {'author': <User: TestAdmin>, 'review': <Review: review number 1>, 'text': 'comment number 1', 'title': <Title: пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ>}
 
     def create(self, validated_data):
         """
@@ -2755,7 +2755,7 @@ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
 
 self = <django.db.models.manager.Manager object at 0x000002507778A970>
 args = ()
-kwargs = {'author': <User: TestAdmin>, 'review': <Review: review number 1>, 'text': 'comment number 1', 'title': <Title: Терминатор>}
+kwargs = {'author': <User: TestAdmin>, 'review': <Review: review number 1>, 'text': 'comment number 1', 'title': <Title: пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ>}
 
     def manager_method(self, *args, **kwargs):
 >       return getattr(self.get_queryset(), name)(*args, **kwargs)
@@ -2764,7 +2764,7 @@ venv\lib\site-packages\django\db\models\manager.py:85:
 _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
 
 self = <QuerySet []>
-kwargs = {'author': <User: TestAdmin>, 'review': <Review: review number 1>, 'text': 'comment number 1', 'title': <Title: Терминатор>}
+kwargs = {'author': <User: TestAdmin>, 'review': <Review: review number 1>, 'text': 'comment number 1', 'title': <Title: пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ>}
 
     def create(self, **kwargs):
         """
@@ -2777,7 +2777,7 @@ venv\lib\site-packages\django\db\models\query.py:451:
 _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
 
 self = <Comment: comment number 1>, args = ()
-kwargs = {'title': <Title: Терминатор>}, cls = <class 'reviews.models.Comment'>
+kwargs = {'title': <Title: пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ>}, cls = <class 'reviews.models.Comment'>
 opts = <Options for Comment>, _setattr = <built-in function setattr>
 _DEFERRED = <Deferred field>
 fields_iter = <tuple_iterator object at 0x00000250790D7D90>, val = None
@@ -2805,7 +2805,7 @@ property_names = frozenset({'pk'})
         # args, and instantiation for iteration is 33% faster.
         if len(args) > len(opts.concrete_fields):
             # Daft, but matches old exception sans the err msg.
-            raise IndexError("Number of args exceeds number of fields")
+            raise IndexError('Number of args exceeds number of fields')
     
         if not kwargs:
             fields_iter = iter(opts.concrete_fields)
@@ -2860,8 +2860,8 @@ property_names = frozenset({'pk'})
     
             if is_related_object:
                 # If we are passed a related instance, set it using the
-                # field.name instead of field.attname (e.g. "user" instead of
-                # "user_id") so that the object gets properly cached (and type
+                # field.name instead of field.attname (e.g. 'user' instead of
+                # 'user_id') so that the object gets properly cached (and type
                 # checked) by the RelatedObjectDescriptor.
                 if rel_obj is not _DEFERRED:
                     _setattr(self, field.name, rel_obj)
@@ -2882,7 +2882,7 @@ property_names = frozenset({'pk'})
                 except (AttributeError, FieldDoesNotExist):
                     pass
             for kwarg in kwargs:
->               raise TypeError("%s() got an unexpected keyword argument '%s'" % (cls.__name__, kwarg))
+>               raise TypeError('%s() got an unexpected keyword argument '%s'' % (cls.__name__, kwarg))
 E               TypeError: Comment() got an unexpected keyword argument 'title'
 
 venv\lib\site-packages\django\db\models\base.py:503: TypeError
@@ -2957,8 +2957,8 @@ api_yamdb\api\serializers.py:116: in create
 _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
 
 self = CommentSerializer(context={'request': <rest_framework.request.Request: POST '/api/v1/titles/34/reviews/34/comments/'>,...or = SlugRelatedField(read_only=True, slug_field='username')
-    pub_date = DateTimeField(label='Дата', read_only=True)
-validated_data = {'author': <User: TestAdmin>, 'review': <Review: review number 1>, 'text': 'comment number 1', 'title': <Title: Терминатор>}
+    pub_date = DateTimeField(label='пїЅпїЅпїЅпїЅ', read_only=True)
+validated_data = {'author': <User: TestAdmin>, 'review': <Review: review number 1>, 'text': 'comment number 1', 'title': <Title: пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ>}
 
     def create(self, validated_data):
         """
@@ -3018,76 +3018,76 @@ validated_data = {'author': <User: TestAdmin>, 'review': <Review: review number 
 E           TypeError: Got a `TypeError` when calling `Comment.objects.create()`. This may be because you have a writable field on the serializer class that is not a valid argument to `Comment.objects.create()`. You may need to make the field read-only, or override the CommentSerializer.create() method to handle this correctly.
 E           Original exception was:
 E            Traceback (most recent call last):
-E             File "D:\Dev\api_yamdb\venv\lib\site-packages\rest_framework\serializers.py", line 962, in create
+E             File 'D:\Dev\api_yamdb\venv\lib\site-packages\rest_framework\serializers.py', line 962, in create
 E               instance = ModelClass._default_manager.create(**validated_data)
-E             File "D:\Dev\api_yamdb\venv\lib\site-packages\django\db\models\manager.py", line 85, in manager_method
+E             File 'D:\Dev\api_yamdb\venv\lib\site-packages\django\db\models\manager.py', line 85, in manager_method
 E               return getattr(self.get_queryset(), name)(*args, **kwargs)
-E             File "D:\Dev\api_yamdb\venv\lib\site-packages\django\db\models\query.py", line 451, in create
+E             File 'D:\Dev\api_yamdb\venv\lib\site-packages\django\db\models\query.py', line 451, in create
 E               obj = self.model(**kwargs)
-E             File "D:\Dev\api_yamdb\venv\lib\site-packages\django\db\models\base.py", line 503, in __init__
-E               raise TypeError("%s() got an unexpected keyword argument '%s'" % (cls.__name__, kwarg))
+E             File 'D:\Dev\api_yamdb\venv\lib\site-packages\django\db\models\base.py', line 503, in __init__
+E               raise TypeError('%s() got an unexpected keyword argument '%s'' % (cls.__name__, kwarg))
 E           TypeError: Comment() got an unexpected keyword argument 'title'
 
 venv\lib\site-packages\rest_framework\serializers.py:981: TypeError
 ------------------------------ Captured log call ------------------------------
 ERROR    django.request:log.py:224 Internal Server Error: /api/v1/titles/34/reviews/34/comments/
 Traceback (most recent call last):
-  File "D:\Dev\api_yamdb\venv\lib\site-packages\rest_framework\serializers.py", line 962, in create
+  File 'D:\Dev\api_yamdb\venv\lib\site-packages\rest_framework\serializers.py', line 962, in create
     instance = ModelClass._default_manager.create(**validated_data)
-  File "D:\Dev\api_yamdb\venv\lib\site-packages\django\db\models\manager.py", line 85, in manager_method
+  File 'D:\Dev\api_yamdb\venv\lib\site-packages\django\db\models\manager.py', line 85, in manager_method
     return getattr(self.get_queryset(), name)(*args, **kwargs)
-  File "D:\Dev\api_yamdb\venv\lib\site-packages\django\db\models\query.py", line 451, in create
+  File 'D:\Dev\api_yamdb\venv\lib\site-packages\django\db\models\query.py', line 451, in create
     obj = self.model(**kwargs)
-  File "D:\Dev\api_yamdb\venv\lib\site-packages\django\db\models\base.py", line 503, in __init__
-    raise TypeError("%s() got an unexpected keyword argument '%s'" % (cls.__name__, kwarg))
+  File 'D:\Dev\api_yamdb\venv\lib\site-packages\django\db\models\base.py', line 503, in __init__
+    raise TypeError('%s() got an unexpected keyword argument '%s'' % (cls.__name__, kwarg))
 TypeError: Comment() got an unexpected keyword argument 'title'
 
 During handling of the above exception, another exception occurred:
 
 Traceback (most recent call last):
-  File "D:\Dev\api_yamdb\venv\lib\site-packages\django\core\handlers\exception.py", line 47, in inner
+  File 'D:\Dev\api_yamdb\venv\lib\site-packages\django\core\handlers\exception.py', line 47, in inner
     response = get_response(request)
-  File "D:\Dev\api_yamdb\venv\lib\site-packages\django\core\handlers\base.py", line 181, in _get_response
+  File 'D:\Dev\api_yamdb\venv\lib\site-packages\django\core\handlers\base.py', line 181, in _get_response
     response = wrapped_callback(request, *callback_args, **callback_kwargs)
-  File "D:\Dev\api_yamdb\venv\lib\site-packages\django\views\decorators\csrf.py", line 54, in wrapped_view
+  File 'D:\Dev\api_yamdb\venv\lib\site-packages\django\views\decorators\csrf.py', line 54, in wrapped_view
     return view_func(*args, **kwargs)
-  File "D:\Dev\api_yamdb\venv\lib\site-packages\rest_framework\viewsets.py", line 125, in view
+  File 'D:\Dev\api_yamdb\venv\lib\site-packages\rest_framework\viewsets.py', line 125, in view
     return self.dispatch(request, *args, **kwargs)
-  File "D:\Dev\api_yamdb\venv\lib\site-packages\rest_framework\views.py", line 509, in dispatch
+  File 'D:\Dev\api_yamdb\venv\lib\site-packages\rest_framework\views.py', line 509, in dispatch
     response = self.handle_exception(exc)
-  File "D:\Dev\api_yamdb\venv\lib\site-packages\rest_framework\views.py", line 469, in handle_exception
+  File 'D:\Dev\api_yamdb\venv\lib\site-packages\rest_framework\views.py', line 469, in handle_exception
     self.raise_uncaught_exception(exc)
-  File "D:\Dev\api_yamdb\venv\lib\site-packages\rest_framework\views.py", line 480, in raise_uncaught_exception
+  File 'D:\Dev\api_yamdb\venv\lib\site-packages\rest_framework\views.py', line 480, in raise_uncaught_exception
     raise exc
-  File "D:\Dev\api_yamdb\venv\lib\site-packages\rest_framework\views.py", line 506, in dispatch
+  File 'D:\Dev\api_yamdb\venv\lib\site-packages\rest_framework\views.py', line 506, in dispatch
     response = handler(request, *args, **kwargs)
-  File "D:\Dev\api_yamdb\venv\lib\site-packages\rest_framework\mixins.py", line 19, in create
+  File 'D:\Dev\api_yamdb\venv\lib\site-packages\rest_framework\mixins.py', line 19, in create
     self.perform_create(serializer)
-  File "D:\Dev\api_yamdb\api_yamdb\api\views.py", line 134, in perform_create
+  File 'D:\Dev\api_yamdb\api_yamdb\api\views.py', line 134, in perform_create
     serializer.save(author=self.request.user, title=title)
-  File "D:\Dev\api_yamdb\venv\lib\site-packages\rest_framework\serializers.py", line 212, in save
+  File 'D:\Dev\api_yamdb\venv\lib\site-packages\rest_framework\serializers.py', line 212, in save
     self.instance = self.create(validated_data)
-  File "D:\Dev\api_yamdb\api_yamdb\api\serializers.py", line 116, in create
+  File 'D:\Dev\api_yamdb\api_yamdb\api\serializers.py', line 116, in create
     return super().create(validated_data)
-  File "D:\Dev\api_yamdb\venv\lib\site-packages\rest_framework\serializers.py", line 981, in create
+  File 'D:\Dev\api_yamdb\venv\lib\site-packages\rest_framework\serializers.py', line 981, in create
     raise TypeError(msg)
 TypeError: Got a `TypeError` when calling `Comment.objects.create()`. This may be because you have a writable field on the serializer class that is not a valid argument to `Comment.objects.create()`. You may need to make the field read-only, or override the CommentSerializer.create() method to handle this correctly.
 Original exception was:
  Traceback (most recent call last):
-  File "D:\Dev\api_yamdb\venv\lib\site-packages\rest_framework\serializers.py", line 962, in create
+  File 'D:\Dev\api_yamdb\venv\lib\site-packages\rest_framework\serializers.py', line 962, in create
     instance = ModelClass._default_manager.create(**validated_data)
-  File "D:\Dev\api_yamdb\venv\lib\site-packages\django\db\models\manager.py", line 85, in manager_method
+  File 'D:\Dev\api_yamdb\venv\lib\site-packages\django\db\models\manager.py', line 85, in manager_method
     return getattr(self.get_queryset(), name)(*args, **kwargs)
-  File "D:\Dev\api_yamdb\venv\lib\site-packages\django\db\models\query.py", line 451, in create
+  File 'D:\Dev\api_yamdb\venv\lib\site-packages\django\db\models\query.py', line 451, in create
     obj = self.model(**kwargs)
-  File "D:\Dev\api_yamdb\venv\lib\site-packages\django\db\models\base.py", line 503, in __init__
-    raise TypeError("%s() got an unexpected keyword argument '%s'" % (cls.__name__, kwarg))
+  File 'D:\Dev\api_yamdb\venv\lib\site-packages\django\db\models\base.py', line 503, in __init__
+    raise TypeError('%s() got an unexpected keyword argument '%s'' % (cls.__name__, kwarg))
 TypeError: Comment() got an unexpected keyword argument 'title'
 ___________ Test06CommentAPI.test_07_comment_detail_put_not_allowed ___________
 
 self = CommentSerializer(context={'request': <rest_framework.request.Request: POST '/api/v1/titles/36/reviews/37/comments/'>,...or = SlugRelatedField(read_only=True, slug_field='username')
-    pub_date = DateTimeField(label='Дата', read_only=True)
-validated_data = {'author': <User: TestAdmin>, 'review': <Review: review number 1>, 'text': 'comment number 1', 'title': <Title: Терминатор>}
+    pub_date = DateTimeField(label='пїЅпїЅпїЅпїЅ', read_only=True)
+validated_data = {'author': <User: TestAdmin>, 'review': <Review: review number 1>, 'text': 'comment number 1', 'title': <Title: пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ>}
 
     def create(self, validated_data):
         """
@@ -3131,7 +3131,7 @@ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
 
 self = <django.db.models.manager.Manager object at 0x000002507778A970>
 args = ()
-kwargs = {'author': <User: TestAdmin>, 'review': <Review: review number 1>, 'text': 'comment number 1', 'title': <Title: Терминатор>}
+kwargs = {'author': <User: TestAdmin>, 'review': <Review: review number 1>, 'text': 'comment number 1', 'title': <Title: пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ>}
 
     def manager_method(self, *args, **kwargs):
 >       return getattr(self.get_queryset(), name)(*args, **kwargs)
@@ -3140,7 +3140,7 @@ venv\lib\site-packages\django\db\models\manager.py:85:
 _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
 
 self = <QuerySet []>
-kwargs = {'author': <User: TestAdmin>, 'review': <Review: review number 1>, 'text': 'comment number 1', 'title': <Title: Терминатор>}
+kwargs = {'author': <User: TestAdmin>, 'review': <Review: review number 1>, 'text': 'comment number 1', 'title': <Title: пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ>}
 
     def create(self, **kwargs):
         """
@@ -3153,7 +3153,7 @@ venv\lib\site-packages\django\db\models\query.py:451:
 _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
 
 self = <Comment: comment number 1>, args = ()
-kwargs = {'title': <Title: Терминатор>}, cls = <class 'reviews.models.Comment'>
+kwargs = {'title': <Title: пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ>}, cls = <class 'reviews.models.Comment'>
 opts = <Options for Comment>, _setattr = <built-in function setattr>
 _DEFERRED = <Deferred field>
 fields_iter = <tuple_iterator object at 0x000002507922E520>, val = None
@@ -3181,7 +3181,7 @@ property_names = frozenset({'pk'})
         # args, and instantiation for iteration is 33% faster.
         if len(args) > len(opts.concrete_fields):
             # Daft, but matches old exception sans the err msg.
-            raise IndexError("Number of args exceeds number of fields")
+            raise IndexError('Number of args exceeds number of fields')
     
         if not kwargs:
             fields_iter = iter(opts.concrete_fields)
@@ -3236,8 +3236,8 @@ property_names = frozenset({'pk'})
     
             if is_related_object:
                 # If we are passed a related instance, set it using the
-                # field.name instead of field.attname (e.g. "user" instead of
-                # "user_id") so that the object gets properly cached (and type
+                # field.name instead of field.attname (e.g. 'user' instead of
+                # 'user_id') so that the object gets properly cached (and type
                 # checked) by the RelatedObjectDescriptor.
                 if rel_obj is not _DEFERRED:
                     _setattr(self, field.name, rel_obj)
@@ -3258,7 +3258,7 @@ property_names = frozenset({'pk'})
                 except (AttributeError, FieldDoesNotExist):
                     pass
             for kwarg in kwargs:
->               raise TypeError("%s() got an unexpected keyword argument '%s'" % (cls.__name__, kwarg))
+>               raise TypeError('%s() got an unexpected keyword argument '%s'' % (cls.__name__, kwarg))
 E               TypeError: Comment() got an unexpected keyword argument 'title'
 
 venv\lib\site-packages\django\db\models\base.py:503: TypeError
@@ -3332,8 +3332,8 @@ api_yamdb\api\serializers.py:116: in create
 _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
 
 self = CommentSerializer(context={'request': <rest_framework.request.Request: POST '/api/v1/titles/36/reviews/37/comments/'>,...or = SlugRelatedField(read_only=True, slug_field='username')
-    pub_date = DateTimeField(label='Дата', read_only=True)
-validated_data = {'author': <User: TestAdmin>, 'review': <Review: review number 1>, 'text': 'comment number 1', 'title': <Title: Терминатор>}
+    pub_date = DateTimeField(label='пїЅпїЅпїЅпїЅ', read_only=True)
+validated_data = {'author': <User: TestAdmin>, 'review': <Review: review number 1>, 'text': 'comment number 1', 'title': <Title: пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ>}
 
     def create(self, validated_data):
         """
@@ -3393,73 +3393,74 @@ validated_data = {'author': <User: TestAdmin>, 'review': <Review: review number 
 E           TypeError: Got a `TypeError` when calling `Comment.objects.create()`. This may be because you have a writable field on the serializer class that is not a valid argument to `Comment.objects.create()`. You may need to make the field read-only, or override the CommentSerializer.create() method to handle this correctly.
 E           Original exception was:
 E            Traceback (most recent call last):
-E             File "D:\Dev\api_yamdb\venv\lib\site-packages\rest_framework\serializers.py", line 962, in create
+E             File 'D:\Dev\api_yamdb\venv\lib\site-packages\rest_framework\serializers.py', line 962, in create
 E               instance = ModelClass._default_manager.create(**validated_data)
-E             File "D:\Dev\api_yamdb\venv\lib\site-packages\django\db\models\manager.py", line 85, in manager_method
+E             File 'D:\Dev\api_yamdb\venv\lib\site-packages\django\db\models\manager.py', line 85, in manager_method
 E               return getattr(self.get_queryset(), name)(*args, **kwargs)
-E             File "D:\Dev\api_yamdb\venv\lib\site-packages\django\db\models\query.py", line 451, in create
+E             File 'D:\Dev\api_yamdb\venv\lib\site-packages\django\db\models\query.py', line 451, in create
 E               obj = self.model(**kwargs)
-E             File "D:\Dev\api_yamdb\venv\lib\site-packages\django\db\models\base.py", line 503, in __init__
-E               raise TypeError("%s() got an unexpected keyword argument '%s'" % (cls.__name__, kwarg))
+E             File 'D:\Dev\api_yamdb\venv\lib\site-packages\django\db\models\base.py', line 503, in __init__
+E               raise TypeError('%s() got an unexpected keyword argument '%s'' % (cls.__name__, kwarg))
 E           TypeError: Comment() got an unexpected keyword argument 'title'
 
 venv\lib\site-packages\rest_framework\serializers.py:981: TypeError
 ------------------------------ Captured log call ------------------------------
 ERROR    django.request:log.py:224 Internal Server Error: /api/v1/titles/36/reviews/37/comments/
 Traceback (most recent call last):
-  File "D:\Dev\api_yamdb\venv\lib\site-packages\rest_framework\serializers.py", line 962, in create
+  File 'D:\Dev\api_yamdb\venv\lib\site-packages\rest_framework\serializers.py', line 962, in create
     instance = ModelClass._default_manager.create(**validated_data)
-  File "D:\Dev\api_yamdb\venv\lib\site-packages\django\db\models\manager.py", line 85, in manager_method
+  File 'D:\Dev\api_yamdb\venv\lib\site-packages\django\db\models\manager.py', line 85, in manager_method
     return getattr(self.get_queryset(), name)(*args, **kwargs)
-  File "D:\Dev\api_yamdb\venv\lib\site-packages\django\db\models\query.py", line 451, in create
+  File 'D:\Dev\api_yamdb\venv\lib\site-packages\django\db\models\query.py', line 451, in create
     obj = self.model(**kwargs)
-  File "D:\Dev\api_yamdb\venv\lib\site-packages\django\db\models\base.py", line 503, in __init__
-    raise TypeError("%s() got an unexpected keyword argument '%s'" % (cls.__name__, kwarg))
+  File 'D:\Dev\api_yamdb\venv\lib\site-packages\django\db\models\base.py', line 503, in __init__
+    raise TypeError('%s() got an unexpected keyword argument '%s'' % (cls.__name__, kwarg))
 TypeError: Comment() got an unexpected keyword argument 'title'
 
 During handling of the above exception, another exception occurred:
 
 Traceback (most recent call last):
-  File "D:\Dev\api_yamdb\venv\lib\site-packages\django\core\handlers\exception.py", line 47, in inner
+  File 'D:\Dev\api_yamdb\venv\lib\site-packages\django\core\handlers\exception.py', line 47, in inner
     response = get_response(request)
-  File "D:\Dev\api_yamdb\venv\lib\site-packages\django\core\handlers\base.py", line 181, in _get_response
+  File 'D:\Dev\api_yamdb\venv\lib\site-packages\django\core\handlers\base.py', line 181, in _get_response
     response = wrapped_callback(request, *callback_args, **callback_kwargs)
-  File "D:\Dev\api_yamdb\venv\lib\site-packages\django\views\decorators\csrf.py", line 54, in wrapped_view
+  File 'D:\Dev\api_yamdb\venv\lib\site-packages\django\views\decorators\csrf.py', line 54, in wrapped_view
     return view_func(*args, **kwargs)
-  File "D:\Dev\api_yamdb\venv\lib\site-packages\rest_framework\viewsets.py", line 125, in view
+  File 'D:\Dev\api_yamdb\venv\lib\site-packages\rest_framework\viewsets.py', line 125, in view
     return self.dispatch(request, *args, **kwargs)
-  File "D:\Dev\api_yamdb\venv\lib\site-packages\rest_framework\views.py", line 509, in dispatch
+  File 'D:\Dev\api_yamdb\venv\lib\site-packages\rest_framework\views.py', line 509, in dispatch
     response = self.handle_exception(exc)
-  File "D:\Dev\api_yamdb\venv\lib\site-packages\rest_framework\views.py", line 469, in handle_exception
+  File 'D:\Dev\api_yamdb\venv\lib\site-packages\rest_framework\views.py', line 469, in handle_exception
     self.raise_uncaught_exception(exc)
-  File "D:\Dev\api_yamdb\venv\lib\site-packages\rest_framework\views.py", line 480, in raise_uncaught_exception
+  File 'D:\Dev\api_yamdb\venv\lib\site-packages\rest_framework\views.py', line 480, in raise_uncaught_exception
     raise exc
-  File "D:\Dev\api_yamdb\venv\lib\site-packages\rest_framework\views.py", line 506, in dispatch
+  File 'D:\Dev\api_yamdb\venv\lib\site-packages\rest_framework\views.py', line 506, in dispatch
     response = handler(request, *args, **kwargs)
-  File "D:\Dev\api_yamdb\venv\lib\site-packages\rest_framework\mixins.py", line 19, in create
+  File 'D:\Dev\api_yamdb\venv\lib\site-packages\rest_framework\mixins.py', line 19, in create
     self.perform_create(serializer)
-  File "D:\Dev\api_yamdb\api_yamdb\api\views.py", line 134, in perform_create
+  File 'D:\Dev\api_yamdb\api_yamdb\api\views.py', line 134, in perform_create
     serializer.save(author=self.request.user, title=title)
-  File "D:\Dev\api_yamdb\venv\lib\site-packages\rest_framework\serializers.py", line 212, in save
+  File 'D:\Dev\api_yamdb\venv\lib\site-packages\rest_framework\serializers.py', line 212, in save
     self.instance = self.create(validated_data)
-  File "D:\Dev\api_yamdb\api_yamdb\api\serializers.py", line 116, in create
+  File 'D:\Dev\api_yamdb\api_yamdb\api\serializers.py', line 116, in create
     return super().create(validated_data)
-  File "D:\Dev\api_yamdb\venv\lib\site-packages\rest_framework\serializers.py", line 981, in create
+  File 'D:\Dev\api_yamdb\venv\lib\site-packages\rest_framework\serializers.py', line 981, in create
     raise TypeError(msg)
 TypeError: Got a `TypeError` when calling `Comment.objects.create()`. This may be because you have a writable field on the serializer class that is not a valid argument to `Comment.objects.create()`. You may need to make the field read-only, or override the CommentSerializer.create() method to handle this correctly.
 Original exception was:
  Traceback (most recent call last):
-  File "D:\Dev\api_yamdb\venv\lib\site-packages\rest_framework\serializers.py", line 962, in create
+  File 'D:\Dev\api_yamdb\venv\lib\site-packages\rest_framework\serializers.py', line 962, in create
     instance = ModelClass._default_manager.create(**validated_data)
-  File "D:\Dev\api_yamdb\venv\lib\site-packages\django\db\models\manager.py", line 85, in manager_method
+  File 'D:\Dev\api_yamdb\venv\lib\site-packages\django\db\models\manager.py', line 85, in manager_method
     return getattr(self.get_queryset(), name)(*args, **kwargs)
-  File "D:\Dev\api_yamdb\venv\lib\site-packages\django\db\models\query.py", line 451, in create
+  File 'D:\Dev\api_yamdb\venv\lib\site-packages\django\db\models\query.py', line 451, in create
     obj = self.model(**kwargs)
-  File "D:\Dev\api_yamdb\venv\lib\site-packages\django\db\models\base.py", line 503, in __init__
-    raise TypeError("%s() got an unexpected keyword argument '%s'" % (cls.__name__, kwarg))
+  File 'D:\Dev\api_yamdb\venv\lib\site-packages\django\db\models\base.py', line 503, in __init__
+    raise TypeError('%s() got an unexpected keyword argument '%s'' % (cls.__name__, kwarg))
 TypeError: Comment() got an unexpected keyword argument 'title'
 -------------------------- Captured stderr teardown ---------------------------
-Destroying test database for alias 'default' ('file:memorydb_default?mode=memory&cache=shared')...
+Destroying test database for alias 'default' ('file:memorydb_default?mode=memory&cache=shared')...
+
 ============================== warnings summary ===============================
 tests/test_04_title.py::Test04TitleAPI::test_01_title_not_auth
 tests/test_04_title.py::Test04TitleAPI::test_02_title_admin
@@ -3525,7 +3526,8 @@ Running migrations:
   Applying token_blacklist.0011_linearizes_history... OK
   Applying token_blacklist.0012_alter_outstandingtoken_user... OK
 ---------------------------- Captured stderr setup ----------------------------
-Creating test database for alias 'default' ('file:memorydb_default?mode=memory&cache=shared')...
+Creating test database for alias 'default' ('file:memorydb_default?mode=memory&cache=shared')...
+
 ------------------------------ Captured log call ------------------------------
 WARNING  django.request:log.py:224 Bad Request: /api/v1/auth/signup/
 _____________ Test00UserRegistration.test_00_invalid_data_signup ______________
